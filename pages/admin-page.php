@@ -42,7 +42,7 @@ function logout(){
                         onmouseout="closeBarAccount()">
                         <h2>Account</h2>
                         <h2 class="acc">Change Password</h2>
-                        <h2 class="acc" name="logout" onclick="goBack()">Log out</h2>
+                        <h2 class="acc" name="logout" onclick="logOutPressed()">Log out</h2>
                     </div>
 
                 </nav>
@@ -50,14 +50,14 @@ function logout(){
         </div>
 
         <!--logout-->
-        <div class="logout-container">
+        <div class="logout-container" id="logout-container">
             <div class="logout-confirmation" name="logout-confirmation" id="logout-confirmation">
 
                 <div>
                     <form method="POST" action="">
                         <h1>Log out?</h1>
-                        <input type="submit" name="confirm" value="Yes" class="logout-decision-buttons">
-                        <input type="submit" name="confirm" value="No" class="logout-decision-buttons">
+                        <input type="submit" name="confirm" value="Yes" class="logout-decision-buttons" onclick="goBack()">
+                        <input type="submit" name="confirm" value="No" class="logout-decision-buttons" onclick="logOutNoPressed()">
                     </form>
                 </div>
 

@@ -26,9 +26,16 @@ function goBack(){
     document.write("<?php session_destroy();?>")
     window.location = "../index.php";
 }
+var logcon = document.getElementById('logout-confirmation');
+function  logOutPressed(){
+    
+    logcon.classList.toggle("m-fadeIn");
 
-function logoutAjax(){
-    var doc = document.getElementById('nav');
-    var logout = "<?php logout(); ?>";
-    document.write(logout);
+    document.getElementById('logout-confirmation').style.width = "15em";
+    document.getElementById('logout-confirmation').style.height = "10em";
+}
+function logOutNoPressed(){
+    logcon.classList.toggle("m-fadeOut");
+    document.getElementById('logout-confirmation').style.height = "0";
+    document.getElementById('logout-confirmation').style.width = "0";
 }

@@ -119,6 +119,7 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
+  
 }
 .logout-confirmation{
   background-color: rgba(58, 58, 58, 70%);
@@ -130,7 +131,10 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 1em;
-  /* visibility: hidden; */
+  opacity:0;
+  visibility: hidden;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+  position: static;
 }
 .logout-decision-buttons{
   margin-left: 1.5em;
@@ -142,5 +146,14 @@ body {
   outline: none;
   border: none;
   cursor:pointer;
-
+}
+.m-fadeOut {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+.m-fadeIn {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
 }
