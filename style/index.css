@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+body {
+  height: 100%;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+.background {
+  background-color: #3a3a3a;
+  background-image: url("../res/background.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+
+}
+.blur {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  height: 100vh;
+  width: 100%;
+}
+.nav {
+  padding-left: 1em;
+  color: white;
+  border-right: 1px solid white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 4em;
+  
+}
+.nav > h2{
+  margin-right: auto;
+    margin-left: 1em;
+    font-family: 'Poiret One', cursive;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding-bottom: 2px;
+    border-bottom:0px;
+    transition: .1s;
+}
+.main-header {
+  display: flex;
+  background-color: rgba(58, 58, 58, 80%);
+}
+.admin-login:hover{
+  color: #a0a0a0;
+  border-bottom: 1px solid #cecece;
+  
+}
+
+
+.help-button {
+  font-size: 0.6em;
+  text-decoration: none;
+  color: inherit;
+}
+.help-button:hover {
+  color: #a0a0a0;
+}
+.main-container {
+  z-index: 2;
+}
+.barcode-form {
+  text-align: center;
+  font-size: 2em;
+  height: 10em;
+  display: flex;
+  justify-content: center;
+  transition: 100ms;
+}
+.form-container {
+  margin-top: 4em;
+  width: 15em;
+  height: 10em;
+  font-family: "Roboto", sans-serif;
+  background-color: rgba(49, 49, 49, 70%);
+  border-radius: .5em;
+  color: white;
+}
+.barcode-input {
+  font-size: 1em;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  border-radius: 15px;
+  border: 2px solid #edf5e1;
+  color: #7e7e7e;
+  outline: none;
+  -moz-appearance: textfield;
+}
+.barcode-input::-webkit-outer-spin-button,
+.barcode-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.barcode-input-holder{
+  padding-bottom: .5em;
+}
+.submitbtn {
+  font-size: .8em;
+  width: 8em;
+  font-family: "Roboto", sans-serif;
+  border: none;
+  border-radius: .5em;
+  cursor: pointer;
+  transition: 50ms linear;
+}
+.submitbtn:hover{
+  background-color:#7e7e7e;
+  color: white;
+}
+
+
+/* .title {
+  font-size: 2em;
+  font-family: 'Poiret One', cursive;
+  animation: App-logo-spin infinite 5s linear;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
+} */
+
+.logo {
+  position: relative;
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
+  font-family: 'Poiret One', cursive;
+  font-size: 2em;
+}
+.logo span {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  text-transform: uppercase;
+  animation: waviy 1s infinite;
+  animation-delay: calc(.1s * var(--i));
+  
+}
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-5px)
+  }
+}
+
+/* admin login page style starts here */
+.admin-login-screen{
+  padding-top: 5em;
+  height: 90%;
+  background-color: white;
+  width: 0px;
+  position: fixed;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.8s ease;
+  background-color: rgba(58, 58, 58, 80%);
+  border-top: 1px solid white;
+  display: flex;
+  justify-content: center;
+}
+.admin-login-screen .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  text-decoration: none;
+  color: white;
+  transition: 100ms;
+}
+.admin-login-screen h1{
+  font-family: 'Poiret One', cursive;
+  margin-left: 10%;
+  color: white;
+}
+.closebtn:hover{
+  color: #a0a0a0;
+}
+.admin-creds{
+text-align: center;
+margin-top: 2em;
+height: 1.4em;
+width: 11em;
+border-radius: 1em;
+font-size: 1.3em;
+outline: none;
+border: none;
+}
+.admin-submit{
+  margin-top: 5em;
+  font-size: 1.5em;
+  width: 10em;
+  border-radius: 2em;
+  height: 1.5em;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: 100ms;
+  font-family: 'Poiret One', cursive;
+}
+
+.admin-submit:hover{
+  background-color:#b3b3b3;
+  color: white;
+}
+
+@media screen and (max-height: 450px) {
+  .admin-login-screen {padding-top: 15px;}
+  .admin-login-screen a {font-size: 18px;}
+}

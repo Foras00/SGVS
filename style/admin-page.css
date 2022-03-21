@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+body {
+  height: 100%;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+.background {
+  background-color: #3a3a3a;
+  background-image: url("../res/background.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.blur {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  height: 100vh;
+  width: 100%;
+}
+.nav {
+  padding-left: 1em;
+  color: white;
+  border-right: 1px solid white;
+  width: 100%;
+  display: inline-block;
+  height: 4em;
+  display: flex;
+  transition: 0.5s ease;
+}
+.nav > div {
+  margin-left: 5em;
+
+  font-size: 1em;
+  cursor: pointer;
+  border-bottom: 0px;
+  transition: 0.5s ease ;
+}
+.logo {
+  margin-top: 1em;
+  position: relative;
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
+  font-family: 'Poiret One', cursive;
+
+}
+.logo span {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  text-transform: uppercase;
+  animation: waviy 1s infinite;
+  animation-delay: calc(.1s * var(--i));
+  font-size: 2em;
+  
+}
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-5px)
+  }
+}
+.main-header {
+  display: flex;
+  font-family: "Poiret One", cursive;
+  background-color: rgba(58, 58, 58, 70%);
+}
+
+.register-tab {
+  height: 4em;
+  padding-left: 5em;
+  overflow-y: hidden;
+}
+.account-tab {
+  height: 4em;
+  overflow-y: hidden;
+}
+/*hovers*/
+.reg {
+  color: white;
+  background-color: transparent;
+  padding-bottom: 2px;
+  border-bottom: 2px transparent solid;
+  transition: 0.1s ease;
+}
+.reg:hover {
+  border-bottom: 2px white solid;
+}
+
+.acc {
+  color: white;
+  background-color: transparent;
+  padding-bottom: 2px;
+  border-bottom: 2px transparent solid;
+  transition: 0.1s ease;
+}
+.acc:hover{
+    border-bottom: 2px white solid;
+}
+
+.logout-button{
+    color: white;
+    background-color: transparent;
+    font-family: "Poiret One", cursive;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/*logout confirmation pop up*/
+.logout-container{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.logout-confirmation{
+  background-color: rgba(58, 58, 58, 70%);
+  font-family: "Poiret One", cursive;
+  width:15em;
+  height: 10em;
+  color: white;
+  border-radius: .5em;
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+  /* visibility: hidden; */
+}
+.logout-decision-buttons{
+  margin-left: 1.5em;
+  font-size: 15px;
+  width: 5em;
+  height: 2em;
+  border-radius: .5em;
+  color: #3a3a3a;
+  outline: none;
+  border: none;
+  cursor:pointer;
+
+}
