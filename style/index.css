@@ -4,26 +4,12 @@
 body {
   height: 100%;
   margin: 0;
+  background-color: #a0a0a0;
 }
 * {
   box-sizing: border-box;
 }
-.background {
-  background-color: #3a3a3a;
-  background-image: url("../res/background.jpg");
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 100%;
 
-}
-.blur {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  height: 100vh;
-  width: 100%;
-}
 .nav {
   padding-left: 1em;
   color: white;
@@ -46,13 +32,15 @@ body {
 }
 .main-header {
   display: flex;
-  background-color: rgba(58, 58, 58, 80%);
+  background-color: rgba(58, 58, 58);
 }
 .admin-login:hover{
   color: #a0a0a0;
   border-bottom: 1px solid #cecece;
   
 }
+.admin-login::-moz-selection { color: white;}
+.admin-login::-webkit-selection { color: white }
 
 
 .help-button {
@@ -79,7 +67,7 @@ body {
   width: 15em;
   height: 10em;
   font-family: "Roboto", sans-serif;
-  background-color: rgba(49, 49, 49, 70%);
+  background-color: rgba(49, 49, 49);
   border-radius: .5em;
   color: white;
 }
@@ -165,7 +153,7 @@ body {
   left: 0;
   overflow-x: hidden;
   transition: 0.8s ease;
-  background-color: rgba(58, 58, 58, 80%);
+  background-color: rgba(58, 58, 58);
   border-top: 1px solid white;
   display: flex;
   justify-content: center;
@@ -193,7 +181,7 @@ text-align: center;
 margin-top: 2em;
 height: 1.4em;
 width: 11em;
-border-radius: 1em;
+border-radius: .5em;
 font-size: 1.3em;
 outline: none;
 border: none;
@@ -219,4 +207,11 @@ border: none;
 @media screen and (max-height: 450px) {
   .admin-login-screen {padding-top: 15px;}
   .admin-login-screen a {font-size: 18px;}
+}
+
+
+/*animations triggers */
+
+.lf-admin{
+  width: 21em;
 }
