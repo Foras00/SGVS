@@ -1,2 +1,2 @@
 # SGVS
-**Web-based Voting System for Student Governments
+Web-based Voting System for Student Governments
