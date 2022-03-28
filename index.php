@@ -48,8 +48,7 @@ if(isset($_POST['admin-submit'])){
 </head>
 
 <body>
-    <div class="background">
-        <div class="blur" />
+        
         <div class="main-container">
             <header class="main-header">
                 <nav class="nav">
@@ -60,15 +59,15 @@ if(isset($_POST['admin-submit'])){
                         <span style="--i:4">S</span>
                     </div>
 
-                    <h2 class="admin-login" onclick="openAdminForm()">Admin Login</h2>
+                    <h2 class="admin-login" id = "admin-login">Admin Login</h2>
                 </nav>
             </header>
         </div>
 
 
-        <div class="admin-login-screen" id="admin-login-page">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeAdminForm()">&times;</a>
-            <form method="POST" action="" onsubmit="chkAdminForm()">
+        <div class="admin-login-screen" id="admin-login-screen">
+            <a href="javascript:void(0)" class="closebtn"id="closebtn">&times;</a>
+            <form method="POST" action="" id="admin-form">
                 <h1>Admin Login</h1>
                 <div>
                     <p class="admin-form-error" id="admin-form-error"></p>
@@ -91,7 +90,7 @@ if(isset($_POST['admin-submit'])){
             <div class="form-container">
                 <br>
                 <h3>Please Scan Your Barcode!</h3>
-                <form METHOD="POST" onsubmit="chkBarcodeInput()">
+                <form METHOD="POST" id="barcode-form">
                     <div class="barcode-input-holder">
                         <input type="password" placeholder="Barcode" id="barcode-input" name="barcode-input"
                             class="barcode-input" autofocus autocomplete="off" />
@@ -103,7 +102,8 @@ if(isset($_POST['admin-submit'])){
                 </form>
             </div>
         </div>
-    </div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript" src="./script/index.js"></script>
 </body>
 

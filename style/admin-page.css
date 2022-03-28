@@ -34,15 +34,15 @@ body {
   transition: 0.5s ease;
 }
 .nav > div {
-  margin-left: 5em;
-
+ 
   font-size: 1em;
   cursor: pointer;
   border-bottom: 0px;
   transition: 0.5s ease ;
 }
 .logo {
-  margin-top: 1em;
+  margin-top: .9em;
+  margin-left: 2em;
   position: relative;
   -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
   font-family: 'Poiret One', cursive;
@@ -71,21 +71,43 @@ body {
   font-family: "Poiret One", cursive;
   background-color: rgba(58, 58, 58, 70%);
 }
+.hamburger-button{
+  margin-top: 1em;
+  margin-left: 2em;
+  transition: 300ms;
+}
+.hamburger-button > img{
+  width: 2em;
+}
+
+.side-nav{
+  background-color: rgba(58, 58, 58, 70%);
+  border-top: solid white 1px;
+  padding: 0;
+  width: 0;
+  height: 92%;
+  font-family: 'Poiret One', cursive;
+  color: white;
+  transition: 400ms ease-in;
+}
+
 
 .register-tab {
   height: 4em;
-  padding-left: 5em;
   overflow-y: hidden;
+  cursor: pointer;
+  transition: 300ms Linear;
 }
 .account-tab {
   height: 4em;
   overflow-y: hidden;
+  cursor: pointer;
+  transition: 300ms Linear;
 }
-/*hovers*/
+
 .reg {
   color: white;
   background-color: transparent;
-  padding-bottom: 2px;
   border-bottom: 2px transparent solid;
   transition: 0.1s ease;
 }
@@ -114,12 +136,15 @@ body {
     font-size: 1em;
 }
 
+
+
 /*logout confirmation pop up*/
 .logout-container{
   height: 100%;
   display: flex;
   justify-content: center;
-  
+  position: relative;
+  visibility:hidden;
 }
 .logout-confirmation{
   background-color: rgba(58, 58, 58, 70%);
@@ -131,10 +156,7 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 1em;
-  opacity:0;
-  visibility: hidden;
-  transition: visibility 0s linear 300ms, opacity 300ms;
-  position: static;
+  /* visibility: hidden; */
 }
 .logout-decision-buttons{
   margin-left: 1.5em;
@@ -146,14 +168,16 @@ body {
   outline: none;
   border: none;
   cursor:pointer;
+
 }
-.m-fadeOut {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 0s, opacity 300ms;
+
+
+/*animations triggers */
+.sn-slide{
+  width: 20em;
+  padding: 1em 3em 0em 3em;
 }
-.m-fadeIn {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s linear 0s, opacity 300ms;
+
+.sn-content-slide{
+  height: 20em;
 }

@@ -18,35 +18,45 @@ function logout(){
 <body>
     <div class="background">
         <div class="blur" />
+
         <div class="main-container">
             <header class="main-header">
-                <nav class="nav" id="nav" onmouseover="extendBar()" onmouseout="closeBar()">
-                    
+                <nav class="nav" id="nav">
+                    <div class="hamburger-button" id="hamburger-button">
+                        <img src="../res/hamburg-btn.png" alt="" id="hamburger-button-icon">
+                    </div>
+
                     <div class="logo">
                         <span style="--i:1">S</span>
                         <span style="--i:2">G</span>
                         <span style="--i:3">V</span>
                         <span style="--i:4">S</span>
                     </div>
-                    
 
-                    <div class="register-tab" id="register-tab" onmouseover="extendBarRegister()"
-                        onmouseout="closeBarRegister()">
+
+
+
+                </nav>
+            </header>
+        </div>
+
+        <div class="side-nav" id="side-nav">
+            <div class="side-nav-container">
+                <nav>
+                    <div class="register-tab" id="register-tab"">
                         <h2>Register</h2>
                         <h2 class="reg">Register a Candidate</h2>
                         <h2 class="reg">Register a Voter</h2>
                         <h2 class="reg">Remove a candidate</h2>
                         <h2 class="reg">Remove a Voter</h2>
                     </div>
-                    <div class="account-tab" id="account-tab" onmouseover="extendBarAccount()"
-                        onmouseout="closeBarAccount()">
+                    <div class="account-tab" id="account-tab"">
                         <h2>Account</h2>
                         <h2 class="acc">Change Password</h2>
                         <h2 class="acc" name="logout" onclick="logOutPressed()">Log out</h2>
                     </div>
-
                 </nav>
-            </header>
+            </div>
         </div>
 
         <!--logout-->
@@ -56,8 +66,10 @@ function logout(){
                 <div>
                     <form method="POST" action="">
                         <h1>Log out?</h1>
-                        <input type="submit" name="confirm" value="Yes" class="logout-decision-buttons" onclick="goBack()">
-                        <input type="submit" name="confirm" value="No" class="logout-decision-buttons" onclick="logOutNoPressed()">
+                        <input type="submit" name="confirm" value="Yes" class="logout-decision-buttons"
+                            onclick="goBack()">
+                        <input type="submit" name="confirm" value="No" class="logout-decision-buttons"
+                            onclick="logOutNoPressed()">
                     </form>
                 </div>
 
@@ -65,8 +77,8 @@ function logout(){
         </div>
 
     </div>
-
-
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript" src="../script/admin-page.js"></script>
 </body>
 
