@@ -4,7 +4,13 @@
 body {
   height: 100%;
   margin: 0;
-  background-color: #a0a0a0;
+  background-color: rgba(49, 49, 49);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 * {
   box-sizing: border-box;
@@ -63,11 +69,11 @@ body {
   transition: 100ms;
 }
 .form-container {
-  margin-top: 4em;
+  margin-top: 2em;
   width: 15em;
   height: 10em;
   font-family: "Roboto", sans-serif;
-  background-color: rgba(49, 49, 49);
+
   border-radius: .5em;
   color: white;
 }
