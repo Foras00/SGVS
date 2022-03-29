@@ -4,49 +4,44 @@
 body {
   height: 100%;
   margin: 0;
-}
-* {
-  box-sizing: border-box;
-}
-.background {
-  background-color: #3a3a3a;
-  background-image: url("../res/background.jpg");
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+  background-color: rgba(49, 49, 49);
   width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
-.blur {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  height: 100vh;
-  width: 100%;
+
+.content-container {
+  display: flex;
+  height: 100%;
+  margin-top: 4em;
 }
-.nav {
-  padding-left: 1em;
+.nav-container {
   color: white;
   border-right: 1px solid white;
-  width: 100%;
-  display: inline-block;
   height: 4em;
-  display: flex;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   transition: 0.5s ease;
 }
 .nav > div {
- 
   font-size: 1em;
   cursor: pointer;
   border-bottom: 0px;
-  transition: 0.5s ease ;
+  transition: 0.5s ease;
 }
 .logo {
-  margin-top: .9em;
+  margin-top: 0.9em;
   margin-left: 2em;
   position: relative;
-  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
-  font-family: 'Poiret One', cursive;
-
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+  font-family: "Poiret One", cursive;
 }
 .logo span {
   position: relative;
@@ -54,73 +49,85 @@ body {
   color: #fff;
   text-transform: uppercase;
   animation: waviy 1s infinite;
-  animation-delay: calc(.1s * var(--i));
+  animation-delay: calc(0.1s * var(--i));
   font-size: 2em;
-  
 }
 @keyframes waviy {
-  0%,40%,100% {
-    transform: translateY(0)
+  0%,
+  40%,
+  100% {
+    transform: translateY(0);
   }
   20% {
-    transform: translateY(-5px)
+    transform: translateY(-5px);
   }
 }
 .main-header {
   display: flex;
   font-family: "Poiret One", cursive;
-  background-color: rgba(58, 58, 58, 70%);
+  background-color: rgba(58, 58, 58);
 }
-.hamburger-button{
+.hamburger-button {
   margin-top: 1em;
   margin-left: 2em;
   transition: 300ms;
 }
-.hamburger-button > img{
+.hamburger-button > img {
   width: 2em;
 }
 
-.side-nav{
-  background-color: rgba(58, 58, 58, 70%);
+.side-nav {
+  background-color: rgba(58, 58, 58);
   border-top: solid white 1px;
   padding: 0;
   width: 0;
-  height: 92%;
-  font-family: 'Poiret One', cursive;
-  font-size: .8em;
+  height: calc(110vh - 100px);
+  font-family: "Poiret One", cursive;
+  font-size: 0.8em;
   color: white;
-  transition: 400ms ease-in;
+  transition: 400ms ease;
   text-align: center;
-}
 
+  display: block;
+  position: fixed;
+  top: 4.85em; 
+  left: 0;
+  height: 100%;
+}
 
 .register-tab {
   height: 3em;
   overflow-y: hidden;
   cursor: pointer;
   transition: 300ms Linear;
+  border-width: 0;
   overflow: hidden;
 }
 .account-tab {
-  height: 3em;
+  height: 4em;
   overflow-y: hidden;
   cursor: pointer;
   transition: 300ms Linear;
-  padding-top: .5em;
+  padding-top: 1em;
   overflow: hidden;
+}
+
+.register-tab > h2:hover, .account-tab > h2:hover{
+  background-color: rgb(170, 170, 170);
+  border-radius: 0.5em;
 }
 
 .reg {
   color: white;
   background-color: transparent;
   border-bottom: 2px transparent solid;
-  transition: 0.1s ease;
-  padding-top: .5em;
+  transition: 100ms ease;
+  padding-top: 0.5em;
   font-size: 1.5em;
-
 }
 .reg:hover {
-  background-color: rgba(138, 134, 134);
+  background-color: rgb(170, 170, 170);
+  border-radius: 0.5em;
 }
 
 .acc {
@@ -128,67 +135,80 @@ body {
   background-color: transparent;
   padding-bottom: 2px;
   border-bottom: 2px transparent solid;
-  transition: 0.1s ease;
-  padding-top: .5em;
+  transition: 100ms ease;
+  padding-top: 0.5em;
   font-size: 1.5em;
-
 }
-.acc:hover{
-  background-color: rgba(138, 134, 134);
-}
-
-.logout-button{
-    color: white;
-    background-color: transparent;
-    font-family: "Poiret One", cursive;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
+.acc:hover {
+  background-color: rgb(170, 170, 170);
+  border-radius: 0.5em;
 }
 
-
+.logout-button {
+  color: white;
+  background-color: transparent;
+  font-family: "Poiret One", cursive;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
 
 /*logout confirmation pop up*/
-.logout-container{
+.logout-container {
   height: 100%;
   display: flex;
   justify-content: center;
   position: absolute;
-  visibility:hidden;
+  visibility: hidden;
+  position: fixed; 
+  left: 40%;
+  top: 0; 
+  height: 100%;
+  transition: 300ms ease;
 }
-.logout-confirmation{
-  background-color: rgba(58, 58, 58, 70%);
+.logout-confirmation {
+  background-color: rgba(58, 58, 58);
   font-family: "Poiret One", cursive;
-  width:15em;
+  width: 14em;
   height: 10em;
   color: white;
-  border-radius: .5em;
-  display: flex;
+  border-radius: 0.5em;
   justify-content: center;
   padding-top: 1em;
+  border: 1px solid white;
   /* visibility: hidden; */
 }
-.logout-decision-buttons{
+.logout-confirmation > h1{
+  padding-left: 1em;
+  padding-bottom: .5em;
+}
+.logout-decision-buttons {
   margin-left: 1.5em;
   font-size: 15px;
   width: 5em;
   height: 2em;
-  border-radius: .5em;
+  border-radius: 0.5em;
   color: #3a3a3a;
   outline: none;
   border: none;
-  cursor:pointer;
-
+  cursor: pointer;
 }
 
-
 /*animations triggers */
-.sn-slide{
+.sn-slide {
   width: 20em;
+
   padding: 1em 3em 0em 3em;
 }
 
-.sn-content-slide{
+.sn-content-slide {
   height: 20em;
+}
+
+.lo-slide {
+  top: 8em;
+  visibility: visible;
+  width: 15em;
+  height: 10em;
 }
