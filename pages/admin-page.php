@@ -11,6 +11,7 @@ function logout(){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/admin-page.css">
     <title>Document</title>
 </head>
@@ -59,6 +60,10 @@ function logout(){
             </div>
         </div>
 
+
+
+
+
         <!--logout-->
         <div class="logout-container" id="logout-container">
             <div class="logout-confirmation" name="logout-confirmation" id="logout-confirmation">
@@ -75,8 +80,50 @@ function logout(){
 
             </div>
         </div>
+ 
+
 
     </div>
+    <div class="table-responsive"><!--this is used for responsive display in mobile and other devices-->  
+    <table class="table table-bordered table-hover table-striped" style="table-layout: fixed">  
+        <thead>  
+  
+        <tr>  
+  
+            <th>User Id</th>  
+            <th>User Name</th>  
+            <th>User E-mail</th>  
+            <th>User Pass</th>  
+            <th>Delete User</th>  
+        </tr>  
+        </thead>  
+  
+        <?php  
+        include("../config.php");  
+        $view_users_query="select * from VOTER_TABLE";//select query for viewing users.  
+        $run=mysqli_query($con,$view_users_query);//here run the sql query.  
+  
+        while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.  
+        {  
+            $voter_id=$row[0];  
+            $voter_fname=$row[1];  
+            $voter_lname=$row[2];  
+            $section=$row[3];  
+  
+        ?>  
+  
+        <tr>  
+<!--here showing results in the table -->  
+            <td><?php echo $voter_id;  ?></td>  
+            <td><?php echo $voter_fname;  ?></td>  
+            <td><?php echo $voter_lname;  ?></td>  
+            <td><?php echo $section;  ?></td>  
+            <td><a href="delete.php?del=<?php echo $user_id ?>"><button class="btn btn-danger">Delete</button></a></td> <!--btn btn-danger is a bootstrap button to show danger-->  
+        </tr>  
+  
+        <?php } ?>  
+  
+    </table>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript" src="../script/admin-page.js"></script>

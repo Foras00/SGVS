@@ -87,22 +87,27 @@ body {
   width: 0;
   height: 92%;
   font-family: 'Poiret One', cursive;
+  font-size: .8em;
   color: white;
   transition: 400ms ease-in;
+  text-align: center;
 }
 
 
 .register-tab {
-  height: 4em;
+  height: 3em;
   overflow-y: hidden;
   cursor: pointer;
   transition: 300ms Linear;
+  overflow: hidden;
 }
 .account-tab {
-  height: 4em;
+  height: 3em;
   overflow-y: hidden;
   cursor: pointer;
   transition: 300ms Linear;
+  padding-top: .5em;
+  overflow: hidden;
 }
 
 .reg {
@@ -110,9 +115,12 @@ body {
   background-color: transparent;
   border-bottom: 2px transparent solid;
   transition: 0.1s ease;
+  padding-top: .5em;
+  font-size: 1.5em;
+
 }
 .reg:hover {
-  border-bottom: 2px white solid;
+  background-color: rgba(138, 134, 134);
 }
 
 .acc {
@@ -121,9 +129,12 @@ body {
   padding-bottom: 2px;
   border-bottom: 2px transparent solid;
   transition: 0.1s ease;
+  padding-top: .5em;
+  font-size: 1.5em;
+
 }
 .acc:hover{
-    border-bottom: 2px white solid;
+  background-color: rgba(138, 134, 134);
 }
 
 .logout-button{
@@ -143,7 +154,7 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  position: relative;
+  position: absolute;
   visibility:hidden;
 }
 .logout-confirmation{

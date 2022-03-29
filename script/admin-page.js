@@ -30,6 +30,7 @@ function logOutPressed() {
     document.getElementById('logout-confirmation').style.width = "15em";
     document.getElementById('logout-confirmation').style.height = "10em";
     document.getElementById('logout-confirmation').style.visibility = "visible";
+    document.getElementById('logout-confirmation').style.zIndex = "1";
 }
 function logOutNoPressed() {
     logcon.classList.toggle("m-fadeOut");
