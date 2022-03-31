@@ -11,7 +11,7 @@ if(isset($_POST['submitbtn'])){
     
     if($count > 0){
       $_SESSION['barcode'] = $barcode;
-       header('Location: ./pages/vote-screen.php');
+       header('Location: ./vote-screen.php');
     }
   }
   
@@ -29,7 +29,8 @@ if(isset($_POST['admin-submit'])){
         $rows = $getRs['admin_id'];
         if($rows > 0){
             $_SESSION['adminId'] = $adminID;
-            header('Location: ./pages/admin-page.php');
+            header('Location: ./admin-dashboard.php');
+
         }
     }
 }
@@ -102,6 +103,23 @@ if(isset($_POST['admin-submit'])){
                 </form>
             </div>
         </div>
+
+        <!-- eto yung bilog bilog na nalutang Reference: https://codepen.io/mohaiman/pen/MQqMyo -->
+        <div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
+        <!---------------------------------------------------------------------------------------->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript" src="./script/index.js"></script>

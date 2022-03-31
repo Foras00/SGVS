@@ -1,214 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
-body {
-  height: 100%;
-  margin: 0;
-  background-color: rgba(49, 49, 49);
-  width: 100%;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-   -khtml-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+@import url("global-nav-style.css");
+/*Home page*/
+.dashboard-container{
+height: 100%;
+width: 100%;
+display: flex;
+justify-content: center;
 }
-
-.content-container {
-  display: flex;
-  height: 100%;
-  margin-top: 4em;
-}
-.nav-container {
-  color: white;
-  border-right: 1px solid white;
-  height: 4em;
+.dashboard-content{
+text-align: center;
+  background-color: white;
   display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  transition: 0.5s ease;
+
 }
-.nav > div {
-  font-size: 1em;
-  cursor: pointer;
-  border-bottom: 0px;
-  transition: 0.5s ease;
-}
-.logo {
-  margin-top: 0.9em;
-  margin-left: 2em;
-  position: relative;
-  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
-  font-family: "Poiret One", cursive;
-}
-.logo span {
-  position: relative;
-  display: inline-block;
-  color: #fff;
-  text-transform: uppercase;
-  animation: waviy 1s infinite;
-  animation-delay: calc(0.1s * var(--i));
-  font-size: 2em;
-}
-@keyframes waviy {
-  0%,
-  40%,
-  100% {
-    transform: translateY(0);
-  }
-  20% {
-    transform: translateY(-5px);
-  }
-}
-.main-header {
-  display: flex;
-  font-family: "Poiret One", cursive;
-  background-color: rgba(58, 58, 58);
-}
-.hamburger-button {
-  margin-top: 1em;
-  margin-left: 2em;
-  transition: 300ms;
-}
-.hamburger-button > img {
-  width: 2em;
+.profile-image{
+  width:10em;
+  border-radius: 100%;
 }
 
-.side-nav {
-  background-color: rgba(58, 58, 58);
-  border-top: solid white 1px;
-  padding: 0;
-  width: 0;
-  height: calc(110vh - 100px);
-  font-family: "Poiret One", cursive;
-  font-size: 0.8em;
-  color: white;
-  transition: 400ms ease;
-  text-align: center;
-
-  display: block;
-  position: fixed;
-  top: 4.85em; 
-  left: 0;
-  height: 100%;
-}
-
-.register-tab {
-  height: 3em;
-  overflow-y: hidden;
-  cursor: pointer;
-  transition: 300ms Linear;
-  border-width: 0;
-  overflow: hidden;
-}
-.account-tab {
-  height: 4em;
-  overflow-y: hidden;
-  cursor: pointer;
-  transition: 300ms Linear;
-  padding-top: 1em;
-  overflow: hidden;
-}
-
-.register-tab > h2:hover, .account-tab > h2:hover{
-  background-color: rgb(170, 170, 170);
-  border-radius: 0.5em;
-}
-
-.reg {
-  color: white;
-  background-color: transparent;
-  border-bottom: 2px transparent solid;
-  transition: 100ms ease;
-  padding-top: 0.5em;
-  font-size: 1.5em;
-}
-.reg:hover {
-  background-color: rgb(170, 170, 170);
-  border-radius: 0.5em;
-}
-
-.acc {
-  color: white;
-  background-color: transparent;
-  padding-bottom: 2px;
-  border-bottom: 2px transparent solid;
-  transition: 100ms ease;
-  padding-top: 0.5em;
-  font-size: 1.5em;
-}
-.acc:hover {
-  background-color: rgb(170, 170, 170);
-  border-radius: 0.5em;
-}
-
-.logout-button {
-  color: white;
-  background-color: transparent;
-  font-family: "Poiret One", cursive;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1em;
-}
-
-/*logout confirmation pop up*/
-.logout-container {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  visibility: hidden;
-  position: fixed; 
-  left: 40%;
-  top: 0; 
-  height: 100%;
-  transition: 300ms ease;
-}
-.logout-confirmation {
-  background-color: rgba(58, 58, 58);
-  font-family: "Poiret One", cursive;
-  width: 14em;
-  height: 10em;
-  color: white;
-  border-radius: 0.5em;
-  justify-content: center;
-  padding-top: 1em;
-  border: 1px solid white;
-  /* visibility: hidden; */
-}
-.logout-confirmation > h1{
-  padding-left: 1em;
-  padding-bottom: .5em;
-}
-.logout-decision-buttons {
-  margin-left: 1.5em;
-  font-size: 15px;
-  width: 5em;
-  height: 2em;
-  border-radius: 0.5em;
-  color: #3a3a3a;
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
-
-/*animations triggers */
-.sn-slide {
-  width: 20em;
-
-  padding: 1em 3em 0em 3em;
-}
-
-.sn-content-slide {
-  height: 20em;
-}
-
-.lo-slide {
-  top: 8em;
-  visibility: visible;
-  width: 15em;
-  height: 10em;
-}
