@@ -1,0 +1,17 @@
+
+    .profile-image{
+      width:10em;
+      border-radius: 100%;
+    }
+    
+    .profile-container{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .profile-content{
+    text-align: center;
+    background-color: white;
+    display: none;
+    }

@@ -11,7 +11,7 @@ if(isset($_POST['submitbtn'])){
     
     if($count > 0){
       $_SESSION['barcode'] = $barcode;
-       header('Location: ./pages/vote-screen.php');
+       header('Location: ./vote-screen.php');
     }
   }
   
@@ -29,7 +29,8 @@ if(isset($_POST['admin-submit'])){
         $rows = $getRs['admin_id'];
         if($rows > 0){
             $_SESSION['adminId'] = $adminID;
-            header('Location: ./pages/admin-page.php');
+            header('Location: ./admin-dashboard.php');
+
         }
     }
 }
