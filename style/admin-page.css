@@ -86,7 +86,6 @@ body {
   font-size: 0.8em;
   color: white;
   transition: 400ms ease;
-  text-align: center;
 
   display: block;
   position: fixed;
@@ -95,25 +94,32 @@ body {
   height: 100%;
 }
 
-.register-tab {
-  height: 3em;
+.side-nav-container{
+  height: 100%;
+text-align: center;
+}
+.side-nav-container div{
   overflow-y: hidden;
   cursor: pointer;
   transition: 300ms Linear;
   border-width: 0;
   overflow: hidden;
-}
-.account-tab {
-  height: 4em;
-  overflow-y: hidden;
-  cursor: pointer;
-  transition: 300ms Linear;
-  padding-top: 1em;
-  overflow: hidden;
+  margin-top: 2em;
+
 }
 
-.register-tab > h2:hover, .account-tab > h2:hover{
-  background-color: rgb(170, 170, 170);
+.register-tab {
+  height: 3em;
+}
+.account-tab {
+  height: 3em;
+}
+.register-tab > h2, .account-tab > h2, .home-tab > h2{
+  transition: 300ms ease;
+}
+
+.register-tab > h2:hover, .account-tab > h2:hover, .home-tab > h2:hover{
+  background-color: #119CED;
   border-radius: 0.5em;
 }
 
@@ -124,11 +130,11 @@ body {
   transition: 100ms ease;
   padding-top: 0.5em;
   font-size: 1.5em;
+  text-align: left;
+  padding-left: 5px;
+
 }
-.reg:hover {
-  background-color: rgb(170, 170, 170);
-  border-radius: 0.5em;
-}
+
 
 .acc {
   color: white;
@@ -138,11 +144,11 @@ body {
   transition: 100ms ease;
   padding-top: 0.5em;
   font-size: 1.5em;
+  text-align: left;
+  padding-left: 5px;
+
 }
-.acc:hover {
-  background-color: rgb(170, 170, 170);
-  border-radius: 0.5em;
-}
+
 
 .logout-button {
   color: white;
@@ -193,6 +199,11 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
+}
+
+.logout-decision-buttons:hover{
+  background-color: #119CED;
+  color: white;
 }
 
 /*animations triggers */

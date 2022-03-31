@@ -14,7 +14,7 @@ function logout(){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/admin-page.css">
-    <title>Document</title>
+    <title>Admin Page</title>
 </head>
 
 <body>
@@ -40,20 +40,23 @@ function logout(){
 
         <div class="side-nav" id="side-nav">
             <div class="side-nav-container">
-                <nav>
-                    <div class="register-tab" id="register-tab"">
+
+                <div class="home-tab" id="home-tab">
+                    <h2>Home</h2>
+                </div>
+                <div class="register-tab" id="register-tab"">
                         <h2>Register</h2>
                         <h2 class=" reg">Register a Candidate</h2>
-                        <h2 class="reg">Register a Voter</h2>
-                        <h2 class="reg">Remove a candidate</h2>
-                        <h2 class="reg">Remove a Voter</h2>
-                    </div>
-                    <div class="account-tab" id="account-tab"">
+                    <h2 class="reg">Register a Voter</h2>
+                    <h2 class="reg">Remove a candidate</h2>
+                    <h2 class="reg">Remove a Voter</h2>
+                </div>
+                <div class="account-tab" id="account-tab"">
                         <h2>Account</h2>
                         <h2 class=" acc">Change Password</h2>
-                        <h2 class="acc" name="logout" id="logout-button">Log out</h2>
-                    </div>
-                </nav>
+                    <h2 class="acc" name="logout" id="logout-button">Log out</h2>
+                </div>
+
             </div>
         </div>
 

@@ -2,7 +2,6 @@
 $(document).ready(function(){
     $("#hamburger-button").click(function(){
         $('.side-nav').toggleClass('sn-slide');
-    
     });
     $("#register-tab").click(function(){
         $('.register-tab').toggleClass('sn-content-slide');
@@ -13,7 +12,7 @@ $(document).ready(function(){
     
     });
     $("#logout-button").click(function(){
-        $('.logout-container').toggleClass('lo-slide');
+        $('.logout-container').toggleClass('lo-slide'); 
     });
     $('#y-button').click(function(){
         document.write("<?php session_destroy();?>")
