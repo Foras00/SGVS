@@ -1,4 +1,8 @@
 <?php
+include "./config.php";
+$id = $_SESSION['adminId'];
+$result = $con -> query("SELECT * FROM ADMIN_TABLE WHERE ADMIN_ID = '$id'");
+$row = $result->fetch_assoc();
 function logout(){
     session_destroy();
     header('Location: ./index.php');
@@ -68,7 +72,7 @@ function logout(){
         <div class="dashboard-container">
             <div class="dashboard-content">
                 <img src="../res/placeholder.png" alt="../res/placeholder.png" class="profile-image">
-                <h1>Welcome, insert_name_here</h1>
+                <h1>Welcome, <?php echo $row['admin_fname'];?></h1>
             </div>
 
         </div>
@@ -87,7 +91,7 @@ function logout(){
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script type="text/javascript" src="./script/global-nav.js"></script>
-        <script type="text/javascript" src="./script/admin-page.js"></script>
+        <script type="text/javascript" src="./script/admin-dashboard.js"></script>
 
     </div>
 
