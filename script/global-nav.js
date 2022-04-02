@@ -32,7 +32,7 @@ $(document).ready(function(){
 
     });
     $("#view-profile-button").click(function(){
-        if(window.location.hash == "#profile"){
+        if(window.location.hash == "#profile" || window.location.hash == "#profile-editable"){
             location.reload();
         }else{
             window.location = "./pages/profile.php";

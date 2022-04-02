@@ -243,7 +243,7 @@ border: none;
   width: 100%;
   height: 95vh;
   overflow: hidden;
-
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .circles li{
@@ -252,7 +252,7 @@ border: none;
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.4);
+  border: 2px rgba(255, 255, 255, 0.8) solid;
   animation: animate 25s linear infinite;
   bottom: -150px;
   border-radius: 100%;

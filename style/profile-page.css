@@ -4,8 +4,10 @@
 @import url("global-nav-style.css");
 
 .profile-image {
-  width: 10em;
+  width: 15em;
   border-radius: 100%;
+  margin: 5em;
+  box-shadow: -.5em .5em white;
 }
 
 .profile-page-container {
@@ -21,13 +23,13 @@
   text-align: center;
   width: 60%;
   height: 90%;
-  background-color: white;
-  color: rgba(58, 58, 58);
-  display: block;
+  color: white;
+  display: flex;
 }
 .profile-content-components{
   list-style: none;
   margin: 0;
+  margin-top: 5em;
   padding: 0;
 }
 .profile-content-components > li, .profile-infos{
@@ -37,6 +39,23 @@
 }
 .profile-infos{
   border: 0;
-  border-bottom: 1px solid black;
+  color: white;
+  transition: 500ms linear;
   outline: none;
+  border-radius: 1em;
+
+
+}
+.edit-btn{
+  outline: none;
+  background-color: white;
+  color: rgba(49, 49, 49);
+  width: 18em;
+  border: none;
+  border-radius: 1em;
+  transition: 50ms linear;
+}
+.edit-btn:hover{
+  background-color: #119CED;
+  color: white;
 }
