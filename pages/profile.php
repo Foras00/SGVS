@@ -1,7 +1,7 @@
 <?php
 include "../config.php";
 $adminID = $_SESSION['adminId'];
-$result = $con -> query("SELECT * FROM ADMIN_TABLE WHERE ADMIN_ID = '$adminID'");
+$result = $con->query("SELECT * FROM ADMIN_TABLE WHERE ADMIN_ID = '$adminID'");
 $row = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -11,8 +11,7 @@ $row = $result->fetch_assoc();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../../style/profile-page.css">
     <title>Profile</title>
 </head>
@@ -44,12 +43,17 @@ $row = $result->fetch_assoc();
                 <div class="home-tab" id="home-tab">
                     <h2 id="home-button">Home</h2>
                 </div>
-                <div class="register-tab" id="register-tab"">
-                        <h2>Register</h2>
-                        <h2 class=" reg">Register a Candidate</h2>
-                    <h2 class="reg">Register a Voter</h2>
-                    <h2 class="reg">Remove a candidate</h2>
-                    <h2 class="reg">Remove a Voter</h2>
+
+                <div class="register-tab" id="register-tab">
+                    <h2>Register</h2>
+                    <h2 class=" reg" id="reg-cand-button">Register a Candidate</h2>
+                    <h2 class="reg" id="reg-voter-button">Register a Voter</h2>
+                </div>
+
+                <div class="remove-tab" id="remove-tab">
+                    <h2>Remove</h2>
+                    <h2 class="rem" id="rem-cand-button">Remove a candidate</h2>
+                    <h2 class="rem" id="rem-voter-button">Remove a Voter</h2>
                 </div>
                 <div class="account-tab" id="account-tab"">
                         <h2>Account</h2>
@@ -63,8 +67,7 @@ $row = $result->fetch_assoc();
         <div class="profile-page-container">
             <div class="profile-content">
                 <div>
-                    <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['user_image']); ?>"
-                        alt="../res/placeholder.png" class="profile-image">
+                    <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['user_image']); ?>" alt="../res/placeholder.png" class="profile-image">
                 </div>
 
                 <ul class="profile-content-components">
@@ -74,17 +77,14 @@ $row = $result->fetch_assoc();
                     </li>
                     <li>
                         <label for="First Name">First Name</label>
-                        <input class="profile-infos" type="text" value="<?php echo $row['admin_fname']?>"
-                            disabled="disabled" id="first_name">
+                        <input class="profile-infos" type="text" value="<?php echo $row['admin_fname'] ?>" disabled="disabled" id="first_name">
                     </li>
                     <li>
                         <label for="Last Name">Last Name</label>
-                        <input class="profile-infos" type="text" value="<?php echo $row['admin_lname']?>"
-                            disabled="disabled" id="last_name">
+                        <input class="profile-infos" type="text" value="<?php echo $row['admin_lname'] ?>" disabled="disabled" id="last_name">
                     </li>
                     <li><label for="Password">Password</label>
-                        <input class="profile-infos" type="password" value="<?php echo $row['admin_password']?>"
-                            disabled="disabled" id="password">
+                        <input class="profile-infos" type="password" value="<?php echo $row['admin_password'] ?>" disabled="disabled" id="password">
                     </li>
                     <li><input type="submit" value="Edit" id="edit-btn" class="edit-btn"></li>
                 </ul>
@@ -93,14 +93,7 @@ $row = $result->fetch_assoc();
         </div>
 
 
-        <!--logout-->
-        <div class="logout-container" id="logout-container">
-            <div class="logout-confirmation" name="logout-confirmation" id="logout-confirmation">
-                <h1>Log out?</h1>
-                <input type="submit" name="confirm" value="Yes" class="logout-decision-buttons" id="y-button">
-                <input type="submit" name="confirm" value="No" class="logout-decision-buttons" id="n-button">
-            </div>
-        </div>
+        <?php include "../logout.php" ?>
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>

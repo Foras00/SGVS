@@ -1,8 +1,7 @@
-
 <?php
-include "../config.php";
+include "./config.php";
 if(!isset($_SESSION['barcode'])){
-    header('Location: ../index.php');
+    header('Location: ./index.php');
 }
 
 if(isset($_POST['back'])){
@@ -24,6 +23,7 @@ echo '<script>console.log("ID: '.$resultSet['voter_id'].' \nFirst Name: '.$resul
 ?>
 
 <html lang="en">
+
 <head>
     <link rel="shortcut icon" href="#">
     <meta charset="UTF-8">
@@ -32,15 +32,17 @@ echo '<script>console.log("ID: '.$resultSet['voter_id'].' \nFirst Name: '.$resul
     <title>Document</title>
 
 </head>
+
 <body>
     <div class="vote-screen-div" id="vote-screen-divv">
         <h1>$userCode</h1>
 
     </div>
-    
-    <form method = "POST" action="">
+
+    <form method="POST" action="">
         <input type="submit" name="back">
         <input type="submit" name="output">
     </form>
 </body>
+
 </html>

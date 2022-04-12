@@ -3,20 +3,84 @@
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 @import url("global-nav-style.css");
 /*Home page*/
-.dashboard-container{
-height: 100%;
-width: 100%;
-display: flex;
-justify-content: center;
+.content-container {
+  display: inline-flex;
+  justify-content: center;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin-top: 4em;
 }
-.dashboard-content{
-text-align: center;
-  background-color: white;
-  display: block;
+.dashboard-container {
+margin-left: 20%;
+}
+.cards-container{
+  height: 30em;
+width: 90%;
+
+  padding-right: 18%;
+  text-align: center;
+  overflow-x: scroll;
+  white-space: nowrap;
 
 }
-.profile-image{
-  width:10em;
-  border-radius: 100%;
+::-webkit-scrollbar {
+  width: 10px;
+ height: 10px;
 }
 
+::-webkit-scrollbar-thumb {
+background-color: darkgrey;
+outline: 1px solid slategrey;
+}
+.cards {
+  width: 80em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  
+  display: inline-flex;
+}
+.card-title{
+  color: white;
+  font-size: 1.5em;
+}
+.card {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 5em;
+  margin-right: 0.5em;
+  width: 15em;
+  height: 25em;
+  display: flex;
+  overflow: hidden;
+  text-align: left;
+  color: white;
+  background-color: rgb(29, 29, 29);
+  border-radius: 1em;
+  box-shadow: 0.5em 0.3em white;
+  transition: 300ms linear;
+  cursor: pointer;
+}
+.card:hover{
+  box-shadow: 0.5em 0.3em #119CED;
+  
+}
+.candidate-image {
+  width: 15em;
+  height: 15em;
+  margin-bottom: 2em;
+  border-radius: 1em 1em 0 0;
+  object-fit: cover;
+  align-self: center;
+}
+.card-content {
+  margin: 0;
+  padding: 0%;
+  font-family: "Poiret One", cursive;
+}
+.card-content > li {
+  list-style-type: none;
+}
+.card-content > li > h1 {
+  font-size: 15px;
+}

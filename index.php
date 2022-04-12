@@ -16,8 +16,6 @@ if(isset($_POST['submitbtn'])){
   }
   
 }
-?>
-<?php
 if(isset($_POST['admin-submit'])){
     $adminID = mysqli_real_escape_string($con, $_POST['admin-id']);
     $adminPass = mysqli_real_escape_string($con, $_POST['admin-pass']);
@@ -28,6 +26,7 @@ if(isset($_POST['admin-submit'])){
         error_reporting(E_ERROR | E_PARSE);
         $rows = $getRs['admin_id'];
         if($rows > 0){
+            $_SESSION['adminLoginSession'] = TRUE;
             $_SESSION['adminId'] = $adminID;
             header('Location: ./admin-dashboard.php');
 

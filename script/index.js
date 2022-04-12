@@ -23,6 +23,8 @@ $(document).ready(function(){
     $('#barcode-form').submit(function(){
         if(document.getElementById('barcode-input').value === ""){
             alert("barcode form is empty");
+        }else{
+            document.write = "<?php barcode() ?>"
         }
     });
 });

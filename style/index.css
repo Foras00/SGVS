@@ -6,6 +6,7 @@ body {
   margin: 0;
   background-image: url("../res/bluebg.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   background-color: rgba(49, 49, 49);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
