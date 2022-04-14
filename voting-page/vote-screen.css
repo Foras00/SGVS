@@ -276,68 +276,7 @@ text-align: center;
 /*Home page*/
 
 /*logout confirmation pop up*/
-.logout-container {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-visibility: hidden;
-  position: fixed; 
-  left: 40%;
-  top: 0; 
-  height: 100%;
-  transition: 300ms ease;
-}
-.logout-confirmation {
-  background-color: rgba(58, 58, 58);
-  font-family: "Poiret One", cursive;
-  width: 14em;
-  height: 10em;
-  color: white;
-  border-radius: 0.5em;
-  justify-content: center;
-  padding-top: 1em;
-  border: 1px solid white;
-  /* visibility: hidden; */
-}
-.logout-confirmation > h1{
-  padding-left: 1em;
-  padding-bottom: .5em;
-}
-.logout-decision-buttons {
-  margin-left: 1.5em;
-  font-size: 15px;
-  width: 5em;
-  height: 2em;
-  border-radius: 0.5em;
-  color: #3a3a3a;
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
 
-.logout-decision-buttons:hover{
-  background-color: #119CED;
-  color: white;
-}
-
-/*animations triggers */
-.sn-slide {
-  width: 20em;
-
-  padding: 1em 3em 0em 3em;
-}
-
-.sn-content-slide {
-  height: 20em;
-}
-
-.lo-slide {
-visibility: visible;
-  top: 8em;
-  width: 15em;
-  height: 10em;
-}
 
 .sad {
   margin-left: -13em;
