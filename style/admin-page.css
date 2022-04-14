@@ -65,6 +65,8 @@ outline: 1px solid slategrey;
   vertical-align: middle;
 
 }
+
+
 @media screen and (max-width: 600px) {
   .card {
     width: 100%;
@@ -74,7 +76,6 @@ outline: 1px solid slategrey;
 }
 .card:hover{
   box-shadow: 0.5em 0.3em #119CED;
-  
 }
 .candidate-image {
   width: 15em;
