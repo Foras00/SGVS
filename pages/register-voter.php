@@ -3,9 +3,27 @@ include "../config.php";
 if (!isset($_SESSION['adminId'])) {
     header('Location: ../err.php');
 } else {
-    $adminID = $_SESSION['adminId'];
-    $result = $con->query("SELECT * FROM ADMIN_TABLE WHERE ADMIN_ID = '$adminID'");
-    $row = $result->fetch_assoc();
+    if (isset($_POST['register'])) {
+    echo ("<script>console.log('works');</script>");
+    $id = mysqli_real_escape_string($con, $_POST['cand_id']);
+    $fname = mysqli_real_escape_string($con, $_POST['f_name']);
+    $lname =  mysqli_real_escape_string($con, $_POST['l_name']);
+    $sec = mysqli_real_escape_string($con, $_POST['section']);
+    
+    if ($_FILES['f1']['name']) {
+        $img = "image/" . $_FILES['f1']['name'];
+        $imgData = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
+        $query = "INSERT INTO " . $pos . "_table (id, first_name, last_name, party_id, section, candidate_image) 
+  			  VALUES('$id','$fname','$lname','$prty','$sec','$imgData')";
+        if (mysqli_query($con, $query)) {
+            echo ("<script> alert('Candidate has been added successfully!'); </script>");
+        } else {
+            echo ("<script> alert('Candidate already exists!!'); </script>");
+        }
+    } else {
+        echo ("<script> alert('error'); </script>");
+    }
+}
 ?>
     <!DOCTYPE html>
     <html lang="en">
