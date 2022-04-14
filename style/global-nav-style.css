@@ -35,10 +35,9 @@ body {
   transition: 0.5s ease;
 }
 .logo {
-  margin-top: 0.9em;
-  margin-left: 2em;
+  margin-top: 0.8em;
+  padding-left: 1em;
   position: relative;
-  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
   font-family: "Poiret One", cursive;
 }
 .logo span {
@@ -60,18 +59,62 @@ body {
     transform: translateY(-5px);
   }
 }
+.logout-container{
+  padding-top: 1em;
+  padding-left: 1em;
+}
+.logout-button {
+  color: white;
+  background-color: transparent;
+  font-family: "Poiret One", cursive;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  text-decoration: none;
+
+}
+.logout-button:hover {
+  background-color: rgb(173, 173, 173);
+  color: white;
+  border-radius: 10%;
+  text-decoration: none;
+
+}
 .main-header {
   display: flex;
   font-family: "Poiret One", cursive;
   background-color: rgba(58, 58, 58);
 }
 .hamburger-button {
-  margin-top: 1em;
-  margin-left: 2em;
-  transition: 300ms;
+  width: 4em;
+  height: 4em;
+  display: flex;
+  justify-content: center;
+  padding-top: 1.2em;
+  padding-left: 1em;
+  padding-bottom: 1em;
 }
-.hamburger-button > img {
+.h-container{
+  width: 3em;
+  height: 2em;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: none;
+  transition: 200ms linear;
+}
+.h-container:hover{
+  background-color: rgb(173, 173, 173);
+  border-radius: 10%;
+}
+.h-container > img{
   width: 2em;
+  height: 2em;
+  object-fit: cover;
+  vertical-align: middle;
+
 }
 
 .side-nav {
@@ -162,63 +205,7 @@ text-align: center;
 
 }
 
-.logout-button {
-  color: white;
-  background-color: transparent;
-  font-family: "Poiret One", cursive;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1em;
-}
 
-/*Home page*/
-
-/*logout confirmation pop up*/
-.logout-container {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-visibility: hidden;
-  position: fixed; 
-  left: 40%;
-  top: 0; 
-  height: 100%;
-  transition: 300ms ease;
-}
-.logout-confirmation {
-  background-color: rgba(58, 58, 58);
-  font-family: "Poiret One", cursive;
-  width: 14em;
-  height: 10em;
-  color: white;
-  border-radius: 0.5em;
-  justify-content: center;
-  padding-top: 1em;
-  border: 1px solid white;
-  /* visibility: hidden; */
-}
-.logout-confirmation > h1{
-  padding-left: 1em;
-  padding-bottom: .5em;
-}
-.logout-decision-buttons {
-  margin-left: 1.5em;
-  font-size: 15px;
-  width: 5em;
-  height: 2em;
-  border-radius: 0.5em;
-  color: #3a3a3a;
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
-
-.logout-decision-buttons:hover{
-  background-color: #119CED;
-  color: white;
-}
 
 /*animations triggers */
 .sn-slide {
@@ -230,10 +217,7 @@ visibility: hidden;
 .sn-content-slide {
   height: 20em;
 }
-
-.lo-slide {
-visibility: visible;
-  top: 8em;
-  width: 15em;
-  height: 10em;
+.h-bg{
+  background-color: rgb(173, 173, 173);
+  border-radius: 10%;
 }

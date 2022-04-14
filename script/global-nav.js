@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     })
     $("#hamburger-button").click(function () {
+        $('.h-container').toggleClass('h-bg');
         chkSn();
     });
     $("#register-tab").click(function () {
@@ -21,14 +22,6 @@ $(document).ready(function () {
             sn_status = "";
         } else {
             sn_status = "rem";
-        }
-    });
-    $("#account-tab").click(function () {
-        $('.account-tab').toggleClass('sn-content-slide');
-        if (sn_status == "acc") {
-            sn_status = "";
-        } else {
-            sn_status = "acc";
         }
     });
 
@@ -49,18 +42,6 @@ $(document).ready(function () {
         }
 
     });
-    $("#view-profile-button").click(function () {
-        if (window.location.hash == "#profile" || window.location.hash == "#profile-editable") {
-            location.reload();
-        } else {
-            if (window.location.hash != "#home") {
-                window.location = "./profile.php";
-            } else {
-                window.location = "./pages/profile.php";
-            }
-        }
-
-    });
 
     $("#reg-voter-button").click(function () {
         if (window.location.hash == "#reg-voter") {
@@ -70,6 +51,18 @@ $(document).ready(function () {
                 window.location = "./register-voter.php";
             } else {
                 window.location = "./pages/register-voter.php";
+            }
+
+        }
+    });
+    $("#reg-party-button").click(function () {
+        if (window.location.hash == "#reg-party") {
+            location.reload();
+        } else {
+            if (window.location.hash != "#home") {
+                window.location = "./register-party.php";
+            } else {
+                window.location = "./pages/register-party.php";
             }
 
         }
@@ -99,11 +92,6 @@ function chkSn() {
             $('.side-nav').toggleClass('sn-slide');
 
             $('.remove-tab').toggleClass('sn-content-slide');
-            sn_status = "";
-            break;
-        case "acc":
-            $('.account-tab').toggleClass('sn-content-slide');
-            $('.side-nav').toggleClass('sn-slide');
             sn_status = "";
             break;
         default:
