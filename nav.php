@@ -41,7 +41,7 @@
             <div class="account-tab" id="account-tab"">
                         <h2>Account</h2>
                         <h2 class=" acc" id="view-profile-button">View Profile</h2>
-                <a href="./logout.php">
+                <a href="../logout.php">
                     <h2 class="acc" name="logout" id="logout-button">Log out</h2>
                 </a>
 

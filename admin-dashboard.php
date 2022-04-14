@@ -13,11 +13,6 @@ if (!isset($_SESSION['adminId'])) {
     $secretary = $con->query("SELECT * FROM SECRETARY_TABLE");
     $auditor = $con->query("SELECT * FROM AUDITOR_TABLE");
     $treasurer = $con->query("SELECT * FROM TREASURER_TABLE");
-
-    if(isset($_POST['inputpress'])){
-        $cand = $_POST["candId"];
-        echo("<script> alert('".$cand."') </script>");
-    }
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -60,10 +55,6 @@ if (!isset($_SESSION['adminId'])) {
                                         <li>
                                             <h1>Votes: <?php echo $pres_row['vote_count']; ?></h1>
                                         </li>
-                                        <form method="POST" action="">
-                                            <input type="" value="<?php echo $pres_row['id'];?>" name="candId" style="visibility: hidden;">
-                                        <input type="submit" name="inputpress" value="SubmitVote">
-                                    </form>
                                     </ul>
                                 </div>
                     <!-- this closing bracket ends the while loop -->
