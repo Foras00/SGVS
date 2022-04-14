@@ -15,7 +15,7 @@ if (isset($_POST['submitbtn'])) {
         if ($count > 0) {
             session_start();
             $_SESSION['barcode'] = $barcode;
-            header('Location: ./vote-screen.php');
+            header('Location: ./voting-page/vote-screen.php');
             exit;
         }
     }
