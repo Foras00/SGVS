@@ -119,7 +119,7 @@ text-align: center;
   transition: 300ms ease;
 }
 
-.register-tab > h2:hover, .account-tab > h2:hover, .home-tab > h2:hover, .remove-tab > h2:hover{
+.register-tab > h2:hover, .account-tab > h2:hover, .account-tab > a:hover, .home-tab > h2:hover, .remove-tab > h2:hover{
   background-color: #119CED;
   border-radius: 0.5em;
 }

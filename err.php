@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,7 @@
     <title>Login Error</title>
 </head>
 <body>
-    <h1>Authentication Error! Please Login Again</h1>
+    <h1>Authentication Error! You are not logged in, Please Login Again</h1>
+    <a href="index.php">Go Home</a>
 </body>
 </html>

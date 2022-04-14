@@ -1,90 +1,80 @@
 <?php
 include "../config.php";
-$adminID = $_SESSION['adminId'];
-$result = $con -> query("SELECT * FROM ADMIN_TABLE WHERE ADMIN_ID = '$adminID'");
-$row = $result->fetch_assoc();
+if (!isset($_SESSION['adminId'])) {
+    header('Location: ../err.php');
+} else {
+    $adminID = $_SESSION['adminId'];
+    $result = $con->query("SELECT * FROM ADMIN_TABLE WHERE ADMIN_ID = '$adminID'");
+    $row = $result->fetch_assoc();
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/reg-voter.css">
-    <title>Profile</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../style/reg-voter.css">
+        <title>Profile</title>
+    </head>
 
-<body>
-<div class="nav-container">
-        <header class="main-header">
-            <nav class="nav" id="nav">
-                <div class="hamburger-button" id="hamburger-button">
-                    <img src="../res/hamburg-btn.png" alt="" id="hamburger-button-icon">
-                </div>
+    <body>
+        <?php include "../nav.php" ?>
+        <div class="main-content">
+            <div class="forms-container">
+                <ul class="forms-list">
+                    <form method="POST" action="" enctype="multipart/form-data" class="reg-form">
 
-                <div class="logo">
-                    <span style="--i:1">S</span>
-                    <span style="--i:2">G</span>
-                    <span style="--i:3">V</span>
-                    <span style="--i:4">S</span>
-                </div>
-            </nav>
-        </header>
-    </div>
-
-    <div class="content-container">
+                        <div class="img-container">
+                            <input type="file" name="f1" accept="image/png, image/jpeg" id="img_selector" class="img-selector" onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
+                            <label for="img_selector">
+                                <img src="../res/placeholder.png" alt="" class="image" id="image">
+                                <p>Click to change</p>
+                            </label>
+                        </div>
 
 
-        <div class="side-nav" id="side-nav">
-            <div class="side-nav-container">
-
-                <div class="home-tab" id="home-tab">
-                    <h2 id="home-button">Home</h2>
-                </div>
-                <div class="register-tab" id="register-tab">
-                    <h2>Register</h2>
-                    <h2 class=" reg" id="reg-cand-button">Register a Candidate</h2>
-                    <h2 class="reg" id="reg-voter-button">Register a Voter</h2>
-                </div>
-
-                <div class="remove-tab" id="remove-tab">
-                    <h2>Remove</h2>
-                    <h2 class="rem" id="rem-cand-button">Remove a candidate</h2>
-                    <h2 class="rem" id="rem-voter-button">Remove a Voter</h2>
-                </div>
-                <div class="account-tab" id="account-tab"">
-                        <h2>Account</h2>
-                        <h2 class=" acc" id="view-profile-button">View Profile</h2>
-                    <h2 class="acc" name="logout" id="logout-button">Log out</h2>
-                </div>
+                        <h4>Voter Barcode/ID: </h4>
+                        <li class="register-forms">
+                            <input type="text" class="forms" name="cand_id" autocomplete="off">
+                        </li>
+                        <h4>First Name: </h4>
+                        <li class="register-forms">
+                            <input type="text" class="forms" name="f_name" autocomplete="off">
+                        </li>
+                        <h4>Last Name: </h4>
+                        <li class="register-forms">
+                            <input type="text" class="forms" name="l_name" autocomplete="off">
+                        </li>
+                        <h4>Section: </h4>
+                        <li class="register-forms">
+                            <input type="text" class="forms" name="section" autocomplete="off">
+                        </li>
+                        <h4>School Year:  </h4>
+                        <li class="register-forms">
+                            <input type="text" class="forms" name="section" autocomplete="off">
+                        </li>
+                        <div class="reg-btn-container">
+                            <input type="submit" value="Register" name="register" class="reg-btn">
+                        </div>
+                    </form>
+                </ul>
 
             </div>
         </div>
 
-
-        <div class="main-content">
-            <h1 style="color: white;">Register Voter Page</h1>
-        </div>
 
         <!--logout-->
-        <div class="logout-container" id="logout-container">
-            <div class="logout-confirmation" name="logout-confirmation" id="logout-confirmation">
-                <h1>Log out?</h1>
-                <input type="submit" name="confirm" value="Yes" class="logout-decision-buttons" id="y-button">
-                <input type="submit" name="confirm" value="No" class="logout-decision-buttons" id="n-button">
-            </div>
-        </div>
-
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script type="text/javascript" src="../script/global-nav.js"></script>
         <script type="text/javascript" src="../script/reg-voter.js"></script>
+        </div>
+    </body>
 
-    </div>
+    </html>
 
-</body>
 
-</html>
+
+<?php } ?>

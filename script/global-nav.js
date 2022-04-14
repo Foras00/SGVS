@@ -31,18 +31,16 @@ $(document).ready(function () {
             sn_status = "acc";
         }
     });
-    $("#logout-button").click(function () {
-        $('.logout-container').toggleClass('lo-slide');
-    });
-    $('#y-button').click(function () {
-        document.write("<?php session_destroy();?>")
-        window.location = "../index.php";
-    });
-    $("#n-button").click(function () {
-        $('.logout-container').toggleClass('lo-slide');
-    });
 
 
+    $("#logo").click(function () {
+        if (window.location.hash == "#home") {
+            location.reload();
+        } else {
+            window.location = "../admin-dashboard.php";
+        }
+
+    });
     $("#home-button").click(function () {
         if (window.location.hash == "#home") {
             location.reload();
@@ -55,24 +53,11 @@ $(document).ready(function () {
         if (window.location.hash == "#profile" || window.location.hash == "#profile-editable") {
             location.reload();
         } else {
-            switch (window.location.hash) {
-                case "#reg-voter":
-                    window.location = "./profile.php";
-                    break;
-                case "#reg-cand":
-                    window.location = "./profile.php";
-                    break;
-                case "#rem-cand":
-                    window.location = "./register-voter.php";
-                    break;
-                case "#rem-voter":
-                    window.location = "./register-voter.php";
-                    break;
-                case "#home":
-                    window.location = "./pages/profile.php";
-                    break;
+            if (window.location.hash != "#home") {
+                window.location = "./profile.php";
+            } else {
+                window.location = "./pages/profile.php";
             }
-
         }
 
     });
@@ -81,51 +66,26 @@ $(document).ready(function () {
         if (window.location.hash == "#reg-voter") {
             location.reload();
         } else {
-            switch (window.location.hash) {
-                case "#profile":
-                    window.location = "./register-voter.php";
-                    break;
-                case "#reg-cand":
-                    window.location = "./register-voter.php";
-                    break;
-                case "#rem-cand":
-                    window.location = "./register-voter.php";
-                    break;
-                case "#rem-voter":
-                    window.location = "./register-voter.php";
-                    break;
-                case "#home":
-                    window.location = "./pages/register-voter.php";
-                    break;
+            if (window.location.hash != "#home") {
+                window.location = "./register-voter.php";
+            } else {
+                window.location = "./pages/register-voter.php";
             }
 
         }
     });
-    $("#reg-cand-button").click(function(){
+    $("#reg-cand-button").click(function () {
         if (window.location.hash == "#reg-cand") {
             location.reload();
         } else {
-            switch (window.location.hash) {
-                case "#profile":
-                    window.location = "./register-candidate.php";
-                    break;
-                case "#reg-voter":
-                    window.location = "./register-candidate.php";
-                    break;
-                case "#rem-cand":
-                    window.location = "./register-candidate.php";
-                    break;
-                case "#rem-voter":
-                    window.location = "./register-candidate.php";
-                    break;
-                case "#home":
-                    window.location = "./pages/register-candidate.php";
-                    break;
+            if (window.location.hash != "#home") {
+                window.location = "./register-candidate.php";
+            } else {
+                window.location = "./pages/register-candidate.php";
             }
-
         }
     });
-    
+
 });
 
 function chkSn() {
@@ -136,8 +96,9 @@ function chkSn() {
             sn_status = "";
             break;
         case "rem":
-            $('.remove-tab').toggleClass('sn-content-slide');
             $('.side-nav').toggleClass('sn-slide');
+
+            $('.remove-tab').toggleClass('sn-content-slide');
             sn_status = "";
             break;
         case "acc":

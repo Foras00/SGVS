@@ -3,6 +3,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 @import url("global-nav-style.css");
 /*Home page*/
+*{
+  box-sizing: border-box;
+}
 .content-container {
   display: inline-flex;
   justify-content: center;
@@ -15,12 +18,14 @@
 margin-left: 20%;
 }
 .cards-container{
-  height: 30em;
-width: 90%;
+  height: auto;
+  display: flex;
+width: 80%;
 
-  padding-right: 18%;
+  
   text-align: center;
   overflow-x: scroll;
+  scroll-behavior: smooth;
   white-space: nowrap;
 
 }
@@ -37,21 +42,18 @@ outline: 1px solid slategrey;
   width: 80em;
   padding-top: 1em;
   padding-bottom: 1em;
-  
-  display: inline-flex;
 }
 .card-title{
   color: white;
   font-size: 1.5em;
 }
 .card {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+
   margin-left: 5em;
   margin-right: 0.5em;
   width: 15em;
   height: 25em;
-  display: flex;
+  display: inline-block;
   overflow: hidden;
   text-align: left;
   color: white;
@@ -60,6 +62,15 @@ outline: 1px solid slategrey;
   box-shadow: 0.5em 0.3em white;
   transition: 300ms linear;
   cursor: pointer;
+  vertical-align: middle;
+
+}
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }
 .card:hover{
   box-shadow: 0.5em 0.3em #119CED;
@@ -75,7 +86,7 @@ outline: 1px solid slategrey;
 }
 .card-content {
   margin: 0;
-  padding: 0%;
+  padding-left: 10px;
   font-family: "Poiret One", cursive;
 }
 .card-content > li {

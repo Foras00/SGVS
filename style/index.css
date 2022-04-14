@@ -189,6 +189,9 @@ body {
 .closebtn:hover{
   color: #119CED;
 }
+.error{
+  color: rgb(255, 130, 130);
+}
 .admin-creds{
 text-align: center;
 margin-top: 2em;

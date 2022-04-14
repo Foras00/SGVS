@@ -1,5 +1,8 @@
 <?php
 include "../config.php";
+if (!isset($_SESSION['adminId'])) {
+    header('Location: ../err.php');
+}else{
 $adminID = $_SESSION['adminId'];
 $result = $con->query("SELECT * FROM ADMIN_TABLE WHERE ADMIN_ID = '$adminID'");
 $row = $result->fetch_assoc();
@@ -17,53 +20,7 @@ $row = $result->fetch_assoc();
 </head>
 
 <body>
-    <div class="nav-container">
-        <header class="main-header">
-            <nav class="nav" id="nav">
-                <div class="hamburger-button" id="hamburger-button">
-                    <img src="../res/hamburg-btn.png" alt="" id="hamburger-button-icon">
-                </div>
-
-                <div class="logo">
-                    <span style="--i:1">S</span>
-                    <span style="--i:2">G</span>
-                    <span style="--i:3">V</span>
-                    <span style="--i:4">S</span>
-                </div>
-            </nav>
-        </header>
-    </div>
-
-    <div class="content-container">
-
-
-        <div class="side-nav" id="side-nav">
-            <div class="side-nav-container">
-
-                <div class="home-tab" id="home-tab">
-                    <h2 id="home-button">Home</h2>
-                </div>
-
-                <div class="register-tab" id="register-tab">
-                    <h2>Register</h2>
-                    <h2 class=" reg" id="reg-cand-button">Register a Candidate</h2>
-                    <h2 class="reg" id="reg-voter-button">Register a Voter</h2>
-                </div>
-
-                <div class="remove-tab" id="remove-tab">
-                    <h2>Remove</h2>
-                    <h2 class="rem" id="rem-cand-button">Remove a candidate</h2>
-                    <h2 class="rem" id="rem-voter-button">Remove a Voter</h2>
-                </div>
-                <div class="account-tab" id="account-tab"">
-                        <h2>Account</h2>
-                        <h2 class=" acc" id="view-profile-button">View Profile</h2>
-                    <h2 class="acc" name="logout" id="logout-button">Log out</h2>
-                </div>
-
-            </div>
-        </div>
-
+<?php include "../nav.php" ?>
         <div class="profile-page-container">
             <div class="profile-content">
                 <div>
@@ -93,7 +50,6 @@ $row = $result->fetch_assoc();
         </div>
 
 
-        <?php include "../logout.php" ?>
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -105,3 +61,4 @@ $row = $result->fetch_assoc();
 </body>
 
 </html>
+<?php } ?>
