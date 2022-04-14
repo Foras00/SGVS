@@ -3,27 +3,33 @@ include "../config.php";
 if (!isset($_SESSION['adminId'])) {
     header('Location: ../err.php');
 } else {
+    $errmsg = "";
     if (isset($_POST['register'])) {
-    echo ("<script>console.log('works');</script>");
-    $id = mysqli_real_escape_string($con, $_POST['cand_id']);
-    $fname = mysqli_real_escape_string($con, $_POST['f_name']);
-    $lname =  mysqli_real_escape_string($con, $_POST['l_name']);
-    $sec = mysqli_real_escape_string($con, $_POST['section']);
-    
-    if ($_FILES['f1']['name']) {
-        $img = "image/" . $_FILES['f1']['name'];
-        $imgData = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
-        $query = "INSERT INTO " . $pos . "_table (id, first_name, last_name, party_id, section, candidate_image) 
-  			  VALUES('$id','$fname','$lname','$prty','$sec','$imgData')";
-        if (mysqli_query($con, $query)) {
-            echo ("<script> alert('Candidate has been added successfully!'); </script>");
+
+        $id = mysqli_real_escape_string($con, $_POST['voter_id']);
+        $fname = mysqli_real_escape_string($con, $_POST['f_name']);
+        $lname =  mysqli_real_escape_string($con, $_POST['l_name']);
+        $sec = mysqli_real_escape_string($con, $_POST['section']);
+        $sy = mysqli_real_escape_string($con, $_POST['school_year']);
+
+        if ($_FILES['f1']['name']) {
+            if ($id != "" && $fname != "" && $lname != "" && $sec != "" && $sy != "") {
+                $img = "image/" . $_FILES['f1']['name'];
+                $imgData = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
+                $query = "INSERT INTO  VOTER_TABLE (VOTER_ID, VOTER_FNAME, VOTER_LNAME, section, school_year, voter_image) 
+                    VALUES('$id','$fname','$lname', '$sec','$sy', '$imgData')";
+                if (mysqli_query($con, $query)) {
+                    echo ("<script> alert('Voter has been added successfully!'); </script>");
+                } else {
+                    $errmsg = "Voter already exists!!";
+                }
+            }else{
+                $errmsg = "One or more field is empty";
+            }
         } else {
-            echo ("<script> alert('Candidate already exists!!'); </script>");
+            $errmsg = "Please Provide an image";
         }
-    } else {
-        echo ("<script> alert('error'); </script>");
     }
-}
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -49,13 +55,12 @@ if (!isset($_SESSION['adminId'])) {
                             <label for="img_selector">
                                 <img src="../res/placeholder.png" alt="" class="image" id="image">
                                 <p>Click to change</p>
+                                <p name="errmsg"><?php echo($errmsg)?></p>
                             </label>
                         </div>
-
-
                         <h4>Voter Barcode/ID: </h4>
                         <li class="register-forms">
-                            <input type="text" class="forms" name="cand_id" autocomplete="off">
+                            <input type="text" class="forms" name="voter_id" autocomplete="off">
                         </li>
                         <h4>First Name: </h4>
                         <li class="register-forms">
@@ -69,9 +74,9 @@ if (!isset($_SESSION['adminId'])) {
                         <li class="register-forms">
                             <input type="text" class="forms" name="section" autocomplete="off">
                         </li>
-                        <h4>School Year:  </h4>
+                        <h4>School Year: </h4>
                         <li class="register-forms">
-                            <input type="text" class="forms" name="section" autocomplete="off">
+                            <input type="text" class="forms" name="school_year" autocomplete="off">
                         </li>
                         <div class="reg-btn-container">
                             <input type="submit" value="Register" name="register" class="reg-btn">
@@ -81,8 +86,6 @@ if (!isset($_SESSION['adminId'])) {
 
             </div>
         </div>
-
-
         <!--logout-->
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -92,7 +95,4 @@ if (!isset($_SESSION['adminId'])) {
     </body>
 
     </html>
-
-
-
 <?php } ?>
