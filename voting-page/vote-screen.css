@@ -339,13 +339,18 @@ visibility: visible;
   height: 10em;
 }
 
-.sad:hover{
-  background: #016ABC;
-color: #fff;
-border: 1px solid #eee;
-border-radius: 20px;
-box-shadow: 5px 5px 5px #eee;
-text-shadow: none;
+.sad {
+  margin-left: -13em;
+  font-size: 15px;
+  width: 5em;
+  height: 2em;
+  border-radius: 10em;
+  color: #3a3a3a;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
-.sad{
+.sad:hover {
+  background-color: #ccc;
+
 }
