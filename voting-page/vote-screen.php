@@ -2,7 +2,7 @@
 include "../config.php";
 if (isset($_GET['back'])) {
     session_destroy();
-    header('Location: ../index.php');
+    header('Location:');
 } else {
 
     $pres = $con->query("SELECT * FROM PRESIDENT_TABLE");
@@ -30,7 +30,7 @@ if (isset($_GET['back'])) {
     $sname = "";
     $ssection = "";
     # Treasurer
-    $tcn = "";
+    $tcn = "";  
     $tname = "";
     $tsection = "";
     # Auditor

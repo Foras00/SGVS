@@ -330,6 +330,7 @@ text-align: center;
   color: white;
   background-color: rgb(29, 29, 29);
   border: none;
+  width: 15em;
 }
 .subb{
   border-radius: 12px;
@@ -338,3 +339,6 @@ text-align: center;
   background-color:  0.5em 0.3em #119CED;
 
 }
+.sub1{
+  border-radius: 12px;
+float: right;}
