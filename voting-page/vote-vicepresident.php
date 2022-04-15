@@ -50,7 +50,7 @@ if (isset($_POST['vpress'])) {
             <div class="cards-container">
                 <div class="cards">
                     <div class="card" name="card" id="card">
-                        <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($sp['candidate_image']); ?>" alt="Please select Candidate" class="candidate-image" id="image">
+                        <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($sp['candidate_image']); ?>" alt="Please select Candidate" onerror=this.src="../res/placeholder.png" class="candidate-image" id="image">
                         <ul class="card-content">
                             <li>
                                 <h1>Candidate NO.:

@@ -4,7 +4,7 @@ if (isset($_GET['back'])) {
     session_destroy();
     header('Location: ../index.php');
 } else {
-
+    //gamit lang to para maka generate ng <option> don sa baba yung may while loop
     $pres = $con->query("SELECT * FROM PRESIDENT_TABLE");
 
 
@@ -15,32 +15,36 @@ if (isset($_GET['back'])) {
     $psection = "";
 
     # President
+
     if (isset($_POST['btn'])) {
-        $pre = mysqli_real_escape_string($con, $_POST['pparty']);
-        $ppres = $con->query("SELECT * FROM PRESIDENT_TABLE WHERE ID = '$pre'");
+        //new variable $pid pang kuha nung selected sa <selection> para magamit sa query
+        $pid = $_POST['selection'];
+        $ppres = $con->query("SELECT * FROM PRESIDENT_TABLE WHERE ID = '$pid'");
 
-
+        //kapag tumuloy yung query (walang error)
         if ($sp = mysqli_fetch_assoc($ppres)) {
+            //iinitialize nito yung mga pre declared variable sa taas na walang value (="") with value na galing sa sql
             $pcn = $sp['id'];
             $pname = "" . $sp['first_name'] . " " . $sp['last_name'] . "";
             $psection = $sp['section'];
-            
         }
     }
-
     if (isset($_POST['btn1'])) {
-        $dat = $_POST['president'];
+        //$pre bagong variable getting value nung <input> sa Candidate NO
+        $pre = $_POST['pres'];
 
-        session_start();
-        $_SESSION['ppr'] = $dat;
-        //header('Location: vote-vicepresident.php');
-        echo '<script>alert ('.$_POST['pparty'].') </script>';
-
-        //exit;
-        # code...
+        //kapag may laman(!="") yung $pre means naka select si user ng candidate
+        if ($pre != "") {
+            //since may laman yung variable na $pre 
+            //mag start ng bagong session tapos mag dedeclare ng $_SESSION variable
+            //yung $_SESSION variable yung gagamitin para makuha yung user choices na candidates
+            session_start();
+            $_SESSION['ppr'] = $pre;
+            header('Location: vote-vicepresident.php');
+        } else {
+            echo "<script> alert('Please Select a Candidate') </script>";
+        }
     }
-
-
 ?>
     <!DOCTYPE html>
 
@@ -62,42 +66,48 @@ if (isset($_GET['back'])) {
         <div class="content_container">
             <div class="dashboard-container">
                 <h1 class="card-title">Presidents</h1>
-                <div class="cards-container">
-                    <div class="cards">
-                        <div class="card" name="card" id="card">
-                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($sp['candidate_image']); ?>" alt="Please select Candidate" class="candidate-image" id="image">
-                            <ul class="card-content">
-                                <li>
-                                    <h1>Candidate NO.:
-                                        <input type="text" name="president" readonly value="<?php echo $pcn; ?>" class="presi">
-                                    </h1>
-                                </li>
-                                <li>
-                                    <h1>Name: <input type="text" name="prname" readonly value="<?php echo $pname; ?>" class="presi">
-                                    </h1>
-                                </li>
-                                <li>
-                                    <h1>Section: <input type="text" name="prname" readonly value="<?php echo $psection; ?>" class="presi">
-                                    </h1>
-                                </li>
-                            </ul>
-                            <form method="POST">
-                                <select name="pparty" id="party" class="forms select-forms">
+                <form method="POST">
+                    <div class="cards-container">
+                        <div class="cards">
+                            <div class="card" name="card" id="card">
+                                <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($sp['candidate_image']); ?>" alt="Please select Candidate" onerror=this.src="../res/placeholder.png" class="candidate-image" id="image">
+                                <div class="card-content">
+
+                                    <h5>Select President Candidate</h5>
+                                    <ul>
+                                        <li>
+                                            <h1>Candidate NO.:
+                                                <input type="text" name="pres" value="<?php echo $pcn; ?>" class="presi" readonly>
+                                            </h1>
+                                        </li>
+                                        <li>
+                                            <h1>Name: <input type="text" name="prname" readonly value="<?php echo $pname; ?>" class="presi">
+                                            </h1>
+                                        </li>
+                                        <li>
+                                            <h1>Section: <input type="text" name="prname" readonly value="<?php echo $psection; ?>" class="presi">
+                                            </h1>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="selection-container">
+                                    <h6>Select</h6>
+                                <select name="selection" id="party" class="forms select-forms">
                                     <option value="none">none</option>
                                     <?php
                                     while ($pres_row = mysqli_fetch_array($pres)) {
                                     ?>
-                                        <option name="press" value="<?php echo $pres_row['id']; ?>"><?php echo $pres_row['id']; ?></option>
+                                        <option name="press" value="<?php echo $pres_row['id']; ?>"><?php echo $pres_row['id']; ?> <?php echo $pres_row['last_name']; ?></option>
                                     <?php } ?>
                                 </select>
                                 <input type="submit" name="btn" class="subb">
-                            </form>
-                        </div>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
-                </div>
-                <form method="POST" action="" >
-                <input type="submit" name="btn1" class="sub1" value="NEXT">
+
+                    <input type="submit" name="btn1" class="sub1" value="NEXT">
                 </form>
             </div>
 
