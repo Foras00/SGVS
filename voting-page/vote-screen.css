@@ -6,11 +6,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 /*Home page*/
+
+
+
+
+
+
+
 *{
   box-sizing: border-box;
 }
 .content-container {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   overflow: hidden;
   height: 100%;
@@ -19,13 +26,12 @@
 }
 .dashboard-container {
 margin-left: 20%;
+margin-right: 20%;
 }
 .cards-container{
   height: auto;
   display: flex;
-width: 80%;
-
-  
+  width: 100%;
   text-align: center;
   overflow-x: scroll;
   scroll-behavior: smooth;
@@ -290,6 +296,33 @@ text-align: center;
   cursor: pointer;
 }
 .sad:hover {
-  background-color: #ccc;
+  background-color: rgb(38, 12, 154);
 
+}
+.image {
+  width: 15em;
+  height: 15em;
+  object-fit: cover;
+  border-radius: 0%;
+  cursor: pointer;
+  transition: 1s linear;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.forms-container {
+  color: white;
+  background-color: rgb(43, 43, 43);
+  font-family: "Roboto", sans-serif;
+  width: 30rem;
+  display: flex;
+  justify-content: center;
+  border-left: 1px white solid;
+  border-right: 1px white solid;
+}
+.forms-list li {
+  display: flex;
 }

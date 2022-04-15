@@ -1,29 +1,33 @@
 <?php
 include "../config.php";
-
-if (isset($_POST['back'])) {
+if (isset($_GET['back'])) {
     session_destroy();
     header('Location: ../index.php');
 } else {
 
     $pres = $con->query("SELECT * FROM PRESIDENT_TABLE");
     $vpres = $con->query("SELECT * FROM VICEPRESIDENT_TABLE");
-    $councilor = $con->query("SELECT * FROM COUNCILOR_TABLE");
+    $councilor1 = $con->query("SELECT * FROM COUNCILOR_TABLE");
+    $councilor2 = $con->query("SELECT * FROM COUNCILOR_TABLE");
+    $councilor3 = $con->query("SELECT * FROM COUNCILOR_TABLE");
+    $councilor4 = $con->query("SELECT * FROM COUNCILOR_TABLE");
+    $councilor5 = $con->query("SELECT * FROM COUNCILOR_TABLE");
     $secretary = $con->query("SELECT * FROM SECRETARY_TABLE");
     $auditor = $con->query("SELECT * FROM AUDITOR_TABLE");
     $treasurer = $con->query("SELECT * FROM TREASURER_TABLE");
 
-    if (isset($_POST['inputpress'])) {
-        $pcand = $_POST["presId"];
-        $vpcand = $_POST["vpresId"];
-        $vcand = $_POST["councilorId"];
-        $scand = $_POST["secretaryId"];
-        $acand = $_POST["auditorId"];
-        $tcand = $_POST["treasurer"];
+    
+    
 
-        echo ("<script> confirm('" . $pcand ."". $vpcand ."". $vcand ."". $scand ."". $acand ."". $tcand ."') </script>");
-        
+
+
+    if (isset($_POST['press'])) {
+        $pre = mysqli_real_escape_string($con, $_POST['party']);
+        $pres = $con->query("SELECT * FROM PRESIDENT_TABLE WHERE ID = $pre");
+        # code...
     }
+
+
 
 
 ?>
@@ -45,220 +49,309 @@ if (isset($_POST['back'])) {
     <body>
         <?php include "vote-nav.php" ?>
         <div class="content_container">
-            <form method="POST" action="">
-                <div class="dashboard-container">
-
-                    <h1 class="card-title">Presidents</h1>
-                    <div class="cards-container">
-                        <div class="cards">
-                            <?php
-                            //while $pres_row returns a value, it will continously create a card containing the values
-                            while ($pres_row = mysqli_fetch_assoc($pres)) {
-                            ?>
-                                <div class="card" name="card" id="card">
-                                    <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($pres_row['candidate_image']); ?>" alt="./res/placeholder.png" class="candidate-image">
-                                    <ul class="card-content">
-                                        <li>
-                                            <h1 id="cand">Candidate NO.: <?php echo $pres_row['id']; ?></h1>
-                                        </li>
-                                        <li>
-                                            <h1>Name: <?php echo $pres_row['first_name']; ?> <?php echo $pres_row['last_name']; ?> </h1>
-                                        </li>
-                                        <li>
-                                            <h1>Section: <?php echo $pres_row['section']; ?> </h1>
-                                        </li>
-
-                                        <input type="" value="<?php echo $pres_row['id']; ?>" name="presId" style="visibility: hidden;">
-                                        <input type="checkbox" class="sad" name="inputpress" value="<?php echo $pres_row['id']; ?>">
-
-                                    </ul>
-                                </div>
-                                <!-- this closing bracket ends the while loop -->
-                            <?php } ?>
+            <div class="dashboard-container">
+                <h1 class="card-title">Presidents</h1>
+                <div class="cards-container">
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($pres_row = mysqli_fetch_array($pres)) {
+                                ?>
+                                    <option name="press" value="<?php echo $pres_row['id']; ?>"><?php echo $pres_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
+                </div>
+                <h1 class="card-title">Vice Presidents</h1>
 
-                    <h1 class="card-title">Vice Presidents</h1>
-                    <div class="cards-container">
-                        <div class="cards">
-                            <?php
-                            //while $pres_row returns a value, it will continously create a card containing the values
-                            while ($vpres_row = mysqli_fetch_assoc($vpres)) {
-                            ?>
-                                <div class="card" name="card" id="card">
-                                    <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($vpres_row['candidate_image']); ?>" alt="./res/placeholder.png" class="candidate-image">
-                                    <ul class="card-content">
-                                        <li>
-                                            <h1 id="cand">Candidate NO.: <?php echo $vpres_row['id']; ?></h1>
-                                        </li>
-                                        <li>
-                                            <h1>Name: <?php echo $vpres_row['first_name']; ?> <?php echo $vpres_row['last_name']; ?> </h1>
-                                        </li>
-                                        <li>
-                                            <h1>Section: <?php echo $vpres_row['section']; ?> </h1>
-                                        </li>
-
-                                        <input type="" value="<?php echo $vpres_row['id']; ?>" name="vpresId" style="visibility: hidden;">
-                                        <input type="checkbox" class="sad" name="inputpress" value="<?php echo $vpres_row['id']; ?>">
-
-                                    </ul>
-                                </div>
-                                <!-- this closing bracket ends the while loop -->
-                            <?php } ?>
+                <div class="cards-container">
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                                <li>
+                                    <h1>Votes: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($vpres_row = mysqli_fetch_array($vpres)) {
+                                ?>
+                                    <option name="vpress" value="<?php echo $vpres_row['id']; ?>"><?php echo $vpres_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
+                </div>
+                <h1 class="card-title">Secretary</h1>
 
-                    <h1 class="card-title">Councilor</h1>
-                    <div class="cards-container">
-                        <div class="cards">
-                            <?php
-                            //while $pres_row returns a value, it will continously create a card containing the values
-                            while ($councilor_row = mysqli_fetch_assoc($councilor)) {
-                            ?>
-                                <div class="card" name="card" id="card">
-                                    <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($councilor_row['candidate_image']); ?>" alt="./res/placeholder.png" class="candidate-image">
-                                    <ul class="card-content">
-                                        <li>
-                                            <h1 id="cand">Candidate NO.: <?php echo $councilor_row['id']; ?></h1>
-                                        </li>
-                                        <li>
-                                            <h1>Name: <?php echo $councilor_row['first_name']; ?> <?php echo $councilor_row['last_name']; ?> </h1>
-                                        </li>
-                                        <li>
-                                            <h1>Section: <?php echo $councilor_row['section']; ?> </h1>
-                                        </li>
-
-                                        <input type="" value="<?php echo $councilor_row['id']; ?>" name="councilorId" style="visibility: hidden;">
-                                        <input type="checkbox" class="sad" name="inputpress" value="<?php echo $councilor_row['id']; ?>">
-
-                                    </ul>
-                                </div>
-                                <!-- this closing bracket ends the while loop -->
-                            <?php } ?>
+                <div class="cards-container">
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                                <li>
+                                    <h1>Votes: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($secretary_row = mysqli_fetch_array($secretary)) {
+                                ?>
+                                    <option name="sect" value="<?php echo $secretary_row['id']; ?>"><?php echo $secretary_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
-
-
-                    <h1 class="card-title">Secretary</h1>
-                    <div class="cards-container">
-                        <div class="cards">
-                            <?php
-                            //while $pres_row returns a value, it will continously create a card containing the values
-                            while ($secretary_row = mysqli_fetch_assoc($secretary)) {
-                            ?>
-                                <div class="card" name="card" id="card">
-                                    <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($secretary_row['candidate_image']); ?>" alt="./res/placeholder.png" class="candidate-image">
-                                    <ul class="card-content">
-                                        <li>
-                                            <h1 id="cand">Candidate NO.: <?php echo $secretary_row['id']; ?></h1>
-                                        </li>
-                                        <li>
-                                            <h1>Name: <?php echo $secretary_row['first_name']; ?> <?php echo $secretary_row['last_name']; ?> </h1>
-                                        </li>
-                                        <li>
-                                            <h1>Section: <?php echo $secretary_row['section']; ?> </h1>
-                                        </li>
-
-                                        <input type="" value="<?php echo $secretary_row['id']; ?>" name="secretaryId" style="visibility: hidden;">
-                                        <input type="checkbox" class="sad" name="inputpress" value="<?php echo $secretary_row['id']; ?>">
-
-                                    </ul>
-                                </div>
-                                <!-- this closing bracket ends the while loop -->
-                            <?php } ?>
+                </div>
+                <h1 class="card-title">Treasurer</h1>
+                <div class="cards-container">
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                                <li>
+                                    <h1>Votes: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($treasurer_row = mysqli_fetch_array($treasurer)) {
+                                ?>
+                                    <option name="press" value="<?php echo $treasurer_row['id']; ?>"><?php echo $treasurer_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
-
-                    <h1 class="card-title">Auditor</h1>
-                    <div class="cards-container">
-                        <div class="cards">
-                            <?php
-                            //while $pres_row returns a value, it will continously create a card containing the values
-                            while ($auditor_row = mysqli_fetch_assoc($auditor)) {
-                            ?>
-                                <div class="card" name="card" id="card">
-                                    <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($auditor_row['candidate_image']); ?>" alt="./res/placeholder.png" class="candidate-image">
-                                    <ul class="card-content">
-                                        <li>
-                                            <h1 id="cand">Candidate NO.: <?php echo $auditor_row['id']; ?></h1>
-                                        </li>
-                                        <li>
-                                            <h1>Name: <?php echo $auditor_row['first_name']; ?> <?php echo $auditor_row['last_name']; ?> </h1>
-                                        </li>
-                                        <li>
-                                            <h1>Section: <?php echo $auditor_row['section']; ?> </h1>
-                                        </li>
-
-                                        <input type="" value="<?php echo $auditor_row['id']; ?>" name="auditorId" style="visibility: hidden;">
-                                        <input type="checkbox" class="sad" name="inputpress" value="<?php echo $auditor_row['id']; ?>">
-
-                                    </ul>
-                                </div>
-                                <!-- this closing bracket ends the while loop -->
-                            <?php } ?>
+                </div>
+                <h1 class="card-title">Auditor</h1>
+                <div class="cards-container">
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                                <li>
+                                    <h1>Votes: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($auditor_row = mysqli_fetch_array($auditor)) {
+                                ?>
+                                    <option name="auditor" value="<?php echo $auditor_row['id']; ?>"><?php echo $auditor_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
-
-
-                    <h1 class="card-title">Auditor</h1>
-                    <div class="cards-container">
-                        <div class="cards">
-                            <?php
-                            //while $pres_row returns a value, it will continously create a card containing the values
-                            while ($treasurer_row = mysqli_fetch_assoc($treasurer)) {
-                            ?>
-                                <div class="card" name="card" id="card">
-                                    <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($treasurer_row['candidate_image']); ?>" alt="./res/placeholder.png" class="candidate-image">
-                                    <ul class="card-content">
-                                        <li>
-                                            <h1 id="cand">Candidate NO.: <?php echo $treasurer_row['id']; ?></h1>
-                                        </li>
-                                        <li>
-                                            <h1>Name: <?php echo $treasurer_row['first_name']; ?> <?php echo $treasurer_row['last_name']; ?> </h1>
-                                        </li>
-                                        <li>
-                                            <h1>Section: <?php echo $treasurer_row['section']; ?> </h1>
-                                        </li>
-
-                                        <input type="" value="<?php echo $treasurer_row['id']; ?>" name="treasurer" style="visibility: hidden;">
-                                        <input type="checkbox" class="sad" name="inputpress" value="<?php echo $treasurer_row['id']; ?>">
-
-                                    </ul>
-                                </div>
-                                <!-- this closing bracket ends the while loop -->
-                            <?php } ?>
-
+                </div>
+                <h1 class="card-title">Councilor</h1>
+                <div class="cards-container">
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                                <li>
+                                    <h1>Votes: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($councilor1_row = mysqli_fetch_array($councilor1)) {
+                                ?>
+                                    <option name="count1" value="<?php echo $councilor1_row['id']; ?>"><?php echo $councilor1_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
-
-                    <input type="submit" name='inputpress' > </input>
-            </form>
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                                <li>
+                                    <h1>Votes: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($councilor2_row = mysqli_fetch_array($councilor2)) {
+                                ?>
+                                    <option name="count2" value="<?php echo $councilor2_row['id']; ?>"><?php echo $councilor2_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                                <li>
+                                    <h1>Votes: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($councilor3_row = mysqli_fetch_array($councilor3)) {
+                                ?>
+                                    <option name="count3" value="<?php echo $councilor3_row['id']; ?>"><?php echo $councilor3_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                                <li>
+                                    <h1>Votes: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($councilor4_row = mysqli_fetch_array($councilor4)) {
+                                ?>
+                                    <option name="count4" value="<?php echo $councilor4_row['id']; ?>"><?php echo $councilor4_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="../res/placeholder.png" alt="" class="image" id="image">
+                            <ul class="card-content">
+                                <li>
+                                    <h1 id="cand">Candidate NO.: </h1>
+                                <li>
+                                    <h1>Name: </h1>
+                                </li>
+                                <li>
+                                    <h1>Section: </h1>
+                                </li>
+                                <li>
+                                    <h1>Votes: </h1>
+                                </li>
+                            </ul>
+                            <select name="party" id="party" class="forms select-forms">
+                                <option value="none">none</option>
+                                <?php
+                                while ($councilor5_row = mysqli_fetch_array($councilor5)) {
+                                ?>
+                                    <option name="count5" value="<?php echo $councilor5_row['id']; ?>"><?php echo $councilor5_row['id']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- these are the script tags for jQuery, note: jQuery will not work offline because of this -->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
-        </div>
-
+    
 
 
 
 
     </body>
+
+
+
+
+
+    <!-- these are the script tags for jQuery, note: jQuery will not work offline because of this -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="../script/voting-page.js"></script>
+
+
+
+
+
+
+
 
     </html>
 <?php } ?>
