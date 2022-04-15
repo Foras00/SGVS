@@ -15,18 +15,25 @@ if (!isset($_SESSION['adminId'])) {
 
         if ($_FILES['f1']['name']) {
             if ($id != "" && $fname != "" && $lname != "" && $sec != "") {
-                $img = "image/" . $_FILES['f1']['name'];
-                $imgData = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
-                $query = "INSERT INTO " . $pos . "_table (id, first_name, last_name, party_id, section, candidate_image) 
-                    VALUES('$id','$fname','$lname','$prty','$sec','$imgData')";
-                if (mysqli_query($con, $query)) {
-                    echo ("<script> alert('Candidate has been added successfully!'); </script>");
+                $chk = "SELECT * FROM ".$pos."_TABLE WHERE ID = '$id'";
+                $q = mysqli_fetch_assoc(mysqli_query($con, $chk));
+                $res = $q['id'];
+                if ($res > 0) {
+                    $errmsg = "Candidate Already exists!!";
                 } else {
-                    $errmsg = "Candidate already exists!!";
+
+                    $img = "image/" . $_FILES['f1']['name'];
+                    $imgData = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
+                    $query = "INSERT INTO " . $pos . "_table (id, first_name, last_name, party_id, section, candidate_image) 
+                    VALUES('$id','$fname','$lname','$prty','$sec','$imgData')";
+                    if (mysqli_query($con, $query)) {
+                        $errmsg = "Candidate has been added successfully!";
+                    } else {
+                        $errmsg = "Candidate already exists!!";
+                    }
                 }
             } else {
                 $errmsg = "one or more field is empty";
-
             }
         } else {
             $errmsg = "Please provide an image";

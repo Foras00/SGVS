@@ -67,6 +67,42 @@ $(document).ready(function () {
 
         }
     });
+    $("#edt-cand-button").click(function () {
+        if (window.location.hash == "#edt-cand") {
+            location.reload();
+        } else {
+            if (window.location.hash != "#home") {
+                window.location = "./edit-candidate.php";
+            } else {
+                window.location = "./pages/edit-candidate.php";
+            }
+        }
+    });
+
+    $("#edt-voter-button").click(function () {
+        if (window.location.hash == "#edt-voter") {
+            location.reload();
+        } else {
+            if (window.location.hash != "#home") {
+                window.location = "./edit-voter.php";
+            } else {
+                window.location = "./pages/edit-voter.php";
+            }
+
+        }
+    });
+    $("#edt-party-button").click(function () {
+        if (window.location.hash == "#edt-party") {
+            location.reload();
+        } else {
+            if (window.location.hash != "#home") {
+                window.location = "./edit-party.php";
+            } else {
+                window.location = "./pages/edit-party.php";
+            }
+
+        }
+    });
     $("#reg-cand-button").click(function () {
         if (window.location.hash == "#reg-cand") {
             location.reload();
@@ -78,6 +114,7 @@ $(document).ready(function () {
             }
         }
     });
+
 
 });
 

@@ -32,11 +32,14 @@ width: 80%;
 ::-webkit-scrollbar {
   width: 10px;
  height: 10px;
+ background-color: rgb(206, 206, 206);
+ border-radius: 1em;
+
 }
 
 ::-webkit-scrollbar-thumb {
-background-color: darkgrey;
-outline: 1px solid slategrey;
+background-color: rgb(94, 94, 94);
+border-radius: 1em;
 }
 .cards {
   width: 80em;
@@ -46,6 +49,14 @@ outline: 1px solid slategrey;
 .card-title{
   color: white;
   font-size: 1.5em;
+  border-bottom: 2px white solid;
+  width: 5em;
+}
+
+.winning-cand{
+  font-size: large;
+  color: white;
+  font-family: 'roboto';
 }
 .card {
 

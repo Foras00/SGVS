@@ -1,0 +1,96 @@
+@import url("../style/global-nav-style.css");
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+}
+.selection-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+.selections {
+  text-align: center;
+  width: 20em;
+  height: 2em;
+  border-radius: 2em;
+  outline: none;
+  cursor: pointer;
+}
+.cand-img {
+  margin-top: 3em;
+  margin-right: 3em;
+  height: 10em;
+  width: 10em;
+  object-fit: cover;
+  border-radius: 100%;
+}
+.candidate-form {
+  background-color: rgb(77, 77, 77);
+  margin-top: 4em;
+  width: 100%;
+  height: 70%;
+  display: inline;
+  justify-content: center;
+  position: fixed;
+  visibility: hidden;
+}
+.form-container {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+.form-contents {
+  display: flex;
+  width: 30em;
+
+  justify-content: center;
+}
+
+.candidate-infos {
+  border-radius: 1em;
+  text-align: center;
+  outline: none;
+
+}
+form > h4 {
+  font-size: 1em;
+  color: white;
+  font-family: "Roboto";
+}
+.submit-btn {
+  display: flex;
+  justify-content: center;
+}
+.candidate-submit {
+  margin-top: 1em;
+  width: 10em;
+  outline: none;
+
+}
+.search {
+  float: right;
+  margin-right: 2em;
+  margin-top: 1em;
+}
+.search-cand{
+    border-radius: 1em;
+    outline: none;
+    text-align: center;
+}
+
+.voter-form{
+    background-color: rgb(77,77,77);
+    margin-top: 4em;
+    width: 100%;
+    height: 70%;
+    display: inline;
+    justify-content: center;
+    position: fixed;
+    visibility: hidden;
+}

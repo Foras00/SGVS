@@ -9,14 +9,17 @@ if (!isset($_SESSION['adminId'])) {
         $id = mysqli_real_escape_string($con, $_POST['party_id']);
         $pname = mysqli_real_escape_string($con, $_POST['party_name']);
         if ($id != "" && $pname != "") {
-            $img = "image/" . $_FILES['f1']['name'];
-            $imgData = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
-            $query = "INSERT INTO  VOTER_TABLE (VOTER_ID, VOTER_FNAME, VOTER_LNAME, section, school_year, voter_image) 
-                    VALUES('$id','$fname','$lname', '$sec','$sy', '$imgData')";
-            if (mysqli_query($con, $query)) {
-                echo ("<script> alert('Voter has been added successfully!'); </script>");
+            $chk = "SELECT * FROM PARTY_TABLE WHERE PARTY_ID = '$id'";
+            $q = mysqli_fetch_array(mysqli_query($con, $chk));
+            $res = $q['party_id'];  
+            if ($res > 0) {
+                $errmsg = "Party Already exists!!";
             } else {
-                $errmsg = "Voter already exists!!";
+                $query = "INSERT INTO  PARTY_TABLE (PARTY_ID, PARTY_NAME) 
+                VALUES('$id', '$pname')";
+                if (mysqli_query($con, $query)) {
+                    $errmsg = "Party has been added successfully!";
+                }
             }
         } else {
             $errmsg = "One or more field is empty";

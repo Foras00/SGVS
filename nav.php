@@ -21,13 +21,12 @@
     </header>
 </div>
 
-<div class="content-container">
 
 
     <div class="side-nav" id="side-nav">
         <div class="side-nav-container">
 
-            <div class="home-tab" id="home-tab">
+            <div class="tab" id="home-tab">
                 <h2 id="home-button">Home</h2>
             </div>
             <div class="register-tab" id="register-tab">
@@ -38,12 +37,9 @@
 
             </div>
 
-            <div class="remove-tab" id="remove-tab">
-                <h2>Remove</h2>
-                <h2 class="rem" id="rem-cand-button">Remove a candidate</h2>
-                <h2 class="rem" id="rem-voter-button">Remove a Voter</h2>
-                <h2 class="rem" id="rem-party-button">Remove a Party</h2>
+            <div class="tab" id="edt-cand-button">
+                <h2 class="" id="edt-voter-button">Edit</h2>
             </div>
 
         </div>
-    </div>
+</div>

@@ -14,16 +14,23 @@ if (!isset($_SESSION['adminId'])) {
 
         if ($_FILES['f1']['name']) {
             if ($id != "" && $fname != "" && $lname != "" && $sec != "" && $sy != "") {
-                $img = "image/" . $_FILES['f1']['name'];
-                $imgData = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
-                $query = "INSERT INTO  VOTER_TABLE (VOTER_ID, VOTER_FNAME, VOTER_LNAME, section, school_year, voter_image) 
-                    VALUES('$id','$fname','$lname', '$sec','$sy', '$imgData')";
-                if (mysqli_query($con, $query)) {
-                    echo ("<script> alert('Voter has been added successfully!'); </script>");
+                $chk = "SELECT * FROM VOTER_TABLE WHERE VOTER_ID = '$id'";
+                $q = mysqli_fetch_assoc(mysqli_query($con, $chk));
+                $res = $q['voter_id'];
+                if ($res > 0) {
+                    $errmsg = "Voter Already exists!!";
                 } else {
-                    $errmsg = "Voter already exists!!";
+                    $img = "image/" . $_FILES['f1']['name'];
+                    $imgData = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
+                    $query = "INSERT INTO  VOTER_TABLE (VOTER_ID, VOTER_FNAME, VOTER_LNAME, section, school_year, voter_image) 
+                    VALUES('$id','$fname','$lname', '$sec','$sy', '$imgData')";
+                    if (mysqli_query($con, $query)) {
+                        echo ("<script> alert('Voter has been added successfully!'); </script>");
+                    } else {
+                        $errmsg = "Voter already exists!!";
+                    }
                 }
-            }else{
+            } else {
                 $errmsg = "One or more field is empty";
             }
         } else {
@@ -92,6 +99,7 @@ if (!isset($_SESSION['adminId'])) {
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script type="text/javascript" src="../script/global-nav.js"></script>
         <script type="text/javascript" src="../script/reg-voter.js"></script>
+
         </div>
     </body>
 

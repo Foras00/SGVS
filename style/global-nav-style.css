@@ -158,11 +158,11 @@ text-align: center;
 .remove-tab{
   height: 3em;
 }
-.register-tab > h2, .account-tab > h2, .home-tab > h2, .remove-tab > h2{
+.register-tab > h2, .account-tab > h2, .tab > h2, .remove-tab > h2{
   transition: 300ms ease;
 }
 
-.register-tab > h2:hover, .account-tab > h2:hover, .account-tab > a:hover, .home-tab > h2:hover, .remove-tab > h2:hover{
+.register-tab > h2:hover, .account-tab > h2:hover, .account-tab > a:hover, .tab > h2:hover, .remove-tab > h2:hover{
   background-color: #119CED;
   border-radius: 0.5em;
 }
