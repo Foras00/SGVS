@@ -326,3 +326,15 @@ text-align: center;
 .forms-list li {
   display: flex;
 }
+.presi{
+  color: white;
+  background-color: rgb(29, 29, 29);
+  border: none;
+}
+.subb{
+  border-radius: 12px;
+}
+.subb:hover{
+  background-color:  0.5em 0.3em #119CED;
+
+}
