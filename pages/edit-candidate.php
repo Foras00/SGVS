@@ -1,9 +1,12 @@
 <?php
 include "../config.php";
-if (!isset($_SESSION['adminId'])) {
+if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
     header('Location: ../err.php');
 } else {
-    $search_errmsg = "";
+    $id = $_SESSION['adminId'];
+    $pss = $_SESSION['passwrd'];
+    $csearch_errmsg = "";
+    $vsearch_errmsg = "";
     $getparties = $con->query("SELECT * FROM PARTY_TABLE");
     $cand_id = "";
     $cand_fn = "";
@@ -11,6 +14,12 @@ if (!isset($_SESSION['adminId'])) {
     $cand_sec = "";
     $cand_p = "";
     $cand_pos = "";
+
+    $voter_id = "";
+    $voter_fn = "";
+    $voter_ln = "";
+    $voter_sec = "";
+    $voter_sy = "";
 
     if (isset($_POST['cand_searchbar'])) {
         $input = mysqli_real_escape_string($con, $_POST['cand_searchbar']);
@@ -27,36 +36,30 @@ if (!isset($_SESSION['adminId'])) {
                     $cand_sec = $res['section'];
                     $cand_p = $res['party_id'];
                     $cand_pos = $pos;
-                }else{
-                    $search_errmsg = "candidate ID not found";
+                } else {
+                    $csearch_errmsg = "candidate ID not found";
                 }
             } else {
-                $search_errmsg = "Search bar is empty";
+                $csearch_errmsg = "Search bar is empty";
             }
         }
     }
+    if (isset($_POST['voter_searchbar'])) {
+        $input = mysqli_real_escape_string($con, $_POST['voter_searchbar']);
 
-
-    if (isset($_POST['submit-btn'])) {
-        $cid = $_POST['cand_id'];
-        $cfn = $_POST['cand_fname'];
-        $cln = $_POST['cand_lname'];
-        $cs = $_POST['cand_section'];
-        $cp = $_POST['cand_party'];
-        $cpos = $_POST['selected_pos'];
-        $canid = $_POST['candidateid'];
-        if ($cp == "select") {
-            $cp = $cand_p;
-        } else {
-            $cp = $_POST['cand_party'];
-        }
-        if ($cid != "" && $cfn != "" && $cln != "") {
-            $cand_query = "UPDATE " . $cpos . "_TABLE SET ID = '" . $cid . "', FIRST_NAME = '" . $cfn . "', LAST_NAME = '" . $cln . "', PARTY_ID = '" . $cp . "', SECTION = '" . $cs . "' WHERE ID = '" . $canid . "'";
-            if (mysqli_query($con, $cand_query)) {
-                echo "<script> alert('Candidate has been updated successfully! $canid') </script>";
+        if (!"" == $input) {
+            $sq = $con->query("SELECT * FROM VOTER_TABLE WHERE VOTER_ID = $input");
+            if ($res = mysqli_fetch_assoc($sq)) {
+                $voter_id = $res['voter_id'];
+                $voter_fn = $res['voter_fname'];
+                $voter_ln = $res['voter_lname'];
+                $voter_sec = $res['section'];
+                $voter_sy = $res['school_year'];
             } else {
-                echo "<script> alert('Error Updating!') </script>";
+                $vsearch_errmsg = "Voter ID not found";
             }
+        } else {
+            $vsearch_errmsg = "Search bar is empty";
         }
     }
 
@@ -77,10 +80,26 @@ if (!isset($_SESSION['adminId'])) {
     </head>
 
     <body>
-        <?php include "../nav.php" ?>
+    <?php include "../nav.php" ?>
+    <div class="confirmation" id="conf">
+                <div class="input-container">
+                    <div class="inputs">
+                        <h5 style="font-family: 'roboto'; color: white;">Confirm Identity</h5>
+                        <h5 style="font-family: 'roboto'; color: white;" id="conf-err" ></h5>
+                        <input type="text" name="input-id" id="input-id" placeholder="Admin ID" class="field">
+                        <input type="password" name="input-pass" id="input-pass" placeholder="Password" class="field">
+                        <input type="submit" name="submit-cofirmation" id="submit-confirmation" value="Confirm" class="conf-btn">
+                        <input type="submit" name="cancel-confirmation" id="cancel-confirmation" value="Cancel" class="conf-btn">
+                    </div>
+
+                </div>
+            </div>
+
+        
         <div class="main-content">
+            
             <div class="selection-container">
-                
+
                 <select name="selections" id="selections" class="selections">
                     <option value="">Choose what to edit</option>
                     <option value="candidate">Candidate</option>
@@ -88,12 +107,13 @@ if (!isset($_SESSION['adminId'])) {
                     <option value="party">Party</option>
                 </select>
             </div>
+
             <!--Candidate Form-->
             <div class="candidate-form">
-                <div class="search">
+                <div class="search-container">
                     <h5 style="color: white; font-family:'roboto';">Select Candidate Position</h5>
                     <form method="POST" action="">
-                        <select name="position" id="position" class="search-cand">
+                        <select name="position" id="position" class="search">
                             <option value="select">Select</option>
                             <option value="PRESIDENT">President</option>
                             <option value="VICEPRESIDENT">Vice President</option>
@@ -103,30 +123,34 @@ if (!isset($_SESSION['adminId'])) {
                             <option value="AUDITOR">Auditor</option>
                         </select>
 
-                        <input type="text" name="cand_searchbar" id="cand_sb" class="search-cand" placeholder="Search by ID">
+                        <input type="text" name="cand_searchbar" id="cand_sb" class="search" placeholder="Search by ID">
                         <input type="submit" value="Search">
                     </form>
-                    <p name="search_erremg" id="search_erremg" style="color: white;"><?php echo $search_errmsg ?></p>
+                    <p name="search_erremg" id="search_erremg" style="color: white;"><?php echo $csearch_errmsg ?></p>
                 </div>
                 <div class="form-container">
                     <div class="form-contents">
                         <img src="../res/placeholder.png" alt="" id="cand_img" class="cand-img">
-                        <form method="POST" action="">
-                            <h4>Position:  
-                                <input type="text" name="selected_pos" value="<?php echo $cand_pos ?>" class="cand-pos" readonly>
+                        <div class="contents">
+                            <h4>Position:
+                                <input type="text" name="selected_pos" id="selected_pos" value="<?php echo $cand_pos ?>" class="cand-pos" readonly>
                             </h4>
-                           
 
-                            <h4>Candidate ID:  <input type="text" name="candidateid" value="<?php echo $cand_id ?>" class="cand-pos" readonly></h4>
-                            <input type="text" name="cand_id" id="cand_id" class="candidate-infos" value="<?php echo $cand_id ?>">
+
+                            <h4>Candidate ID: <input type="text" name="candidateid" id="getid" value="<?php echo $cand_id ?>" class="cand-pos" readonly></h4>
+                            <input type="text" name="cand_id" id="cand_id" class="candidate-infos" value="<?php echo $cand_id ?>" disabled="true">
+
                             <h4>First Name: <?php echo $cand_fn ?></h4>
-                            <input type="text" name="cand_fname" id="cand_fn" class="candidate-infos" value="<?php echo $cand_fn ?>">
+                            <input type="text" name="cand_fname" id="cand_fn" class="candidate-infos" value="<?php echo $cand_fn ?>" disabled="true">
+
                             <h4>Last Name: <?php echo $cand_ln ?></h4>
-                            <input type="text" name="cand_lname" id="cand_ln" class="candidate-infos" value="<?php echo $cand_ln ?>">
+                            <input type="text" name="cand_lname" id="cand_ln" class="candidate-infos" value="<?php echo $cand_ln ?>" disabled="true">
+
                             <h4>Section: <?php echo $cand_sec ?></h4>
-                            <input type="text" name="cand_section" id="cand_sec" class="candidate-infos" value="<?php echo $cand_sec ?>">
-                            <h4>Party: <?php echo $cand_p ?></h4>
-                            <select name="cand_party" id="cand_p" class="candidate-infos" style="width: 10em; cursor: pointer;">
+                            <input type="text" name="cand_section" id="cand_sec" class="candidate-infos" value="<?php echo $cand_sec ?>" disabled="true">
+
+                            <h4>Party: <input type="text" name="candidateid" id="getprty" value="<?php echo $cand_p ?>" class="cand-pos" readonly></h4>
+                            <select name="cand_party" id="cand_p" class="candidate-infos" style="width: 10em; cursor: pointer;" disabled="true">
                                 <option value="select">Select</option>
                                 <?php while ($prtyrows = mysqli_fetch_assoc($getparties)) { ?>
                                     <option value="<?php echo $prtyrows['party_id']; ?>"><?php echo $prtyrows['party_id']; ?>
@@ -134,45 +158,121 @@ if (!isset($_SESSION['adminId'])) {
                                     </option>
                                 <?php } ?>
                             </select>
+
                             <div class="submit-btn">
-                                <input type="submit" name="submit-btn" value="Submit" class="candidate-infos">
+                                <input type="submit" name="submit-btn" id="submit-btn" value="edit" class="candidate-infos" disabled="true">
+                                <input type="submit" name="del-btn" id="del-btn" value="delete" class="candidate-infos" disabled="true">
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
             <!--Voter form-->
             <div class=" voter-form">
-                <div class="search">
-                    <form method="GET" action="">
-                    <h5 style="color: white; font-family:'roboto';">Search Voter</h5>
-                        <input type="text" name="voter_searchbar" id="voter_sb" class="search-cand" placeholder="Search">
+                <div class="search-container">
+                    <form method="POST" action="">
+                        <h5 style="color: white; font-family:'roboto';">Search Voter</h5>
+                        <input type="text" name="voter_searchbar" id="voter_sb" class="search" placeholder="Search">
                         <input type="submit" value="Search">
                     </form>
+                    <p name="search_erremg" id="search_erremg" style="color: white;"><?php echo $vsearch_errmsg ?></p>S
                 </div>
                 <div class="form-container">
                     <div class="form-contents">
                         <img src="../res/placeholder.png" alt="" id="voter_img" class="cand-img">
-                        <form action="">
-                            <h4>Voter ID:</h4>
-                            <input type="text" name="id" id="voter_id" class="candidate-infos">
-                            <h4>First Name:</h4>
-                            <input type="text" name="fname" id="voter_fn" class="candidate-infos">
-                            <h4>Last Name</h4>
-                            <input type="text" name="lname" id="voter_ln" class="candidate-infos">
+                        <div class="contents">
+                            <h4>Voter ID: <input type="text" name="voterid" id="getvid" value="<?php echo $voter_id ?>" class="cand-pos" readonly></h4>
+                            <input type="text" name="id" id="voter_id" class="candidate-infos" value="<?php echo $voter_id ?>" disabled="true">
+                            <h4>First Name: <?php echo $voter_fn ?></h4>
+                            <input type="text" name="fname" id="voter_fn" class="candidate-infos" value="<?php echo $voter_fn ?>" disabled="true">
+                            <h4>Last Name: <?php echo $voter_ln ?></h4>
+                            <input type="text" name="lname" id="voter_ln" class="candidate-infos" value="<?php echo $voter_ln ?>" disabled="true">
+                            <h4>Section: <?php echo $voter_sec ?></h4>
+                            <input type="text" name="lname" id="voter_sec" class="candidate-infos" value="<?php echo $voter_sec ?>" disabled="true">
+                            <h4>School Year: <?php echo $voter_sy ?></h4>
+                            <input type="text" name="lname" id="voter_sy" class="candidate-infos" value="<?php echo $voter_sy ?>" disabled="true">
                             <div class="submit-btn">
-                                <button class="candidate-submit candidate-infos"">Submit</button>
-                                </div> 
-                             </form>
+                                <input type="submit" name="vsubmit-btn" id="vsubmit-btn" value="edit" class="candidate-infos" disabled="true">
+                                <input type="submit" name="vdel-btn" id="vdel-btn" value="delete" class="candidate-infos" disabled="true">
+                            </div>
                         </div>
                     </div>
-
+                </div>
+            </div>
+            <!--party form-->
+            <div class="party-form">
+                <div class="search-container">
+                    <form method="POST" action="">
+                        <h5 style="color: white; font-family:'roboto';">Search Voter</h5>
+                        <input type="text" name="party_searchbar" id="party_sb" class="search" placeholder="Search">
+                        <input type="submit" value="Search">
+                    </form>
+                    <p name="search_erremg" id="search_erremg" style="color: white;"><?php echo $vsearch_errmsg ?></p>S
+                </div>
+                <div class="form-container">
+                    <div class="form-contents">
+                        <img src="../res/placeholder.png" alt="" id="voter_img" class="cand-img">
+                        <div class="contents">
+                            <h4>Party ID: <input type="text" name="voterid" id="getvid" value="<?php echo $voter_id ?>" class="cand-pos" readonly></h4>
+                            <input type="text" name="id" id="voter_id" class="candidate-infos" value="<?php echo $voter_id ?>" disabled="true">
+                            <h4>First Name: <?php echo $voter_fn ?></h4>
+                            <input type="text" name="fname" id="voter_fn" class="candidate-infos" value="<?php echo $voter_fn ?>" disabled="true">
+                            <div class="submit-btn">
+                                <input type="submit" name="vsubmit-btn" id="vsubmit-btn" value="edit" class="candidate-infos" disabled="true">
+                                <input type="submit" name="vdel-btn" id="vdel-btn" value="delete" class="candidate-infos" disabled="true">
                             </div>
-                            <script type=" text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-                                    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-                                    <script type="text/javascript" src="../script/global-nav.js"></script>
-                                    <script type="text/javascript" src="../script/edt-candidate.js"></script>
-                                    <script type="text/javascript" src="../plugin/bootstable.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <div>
+                                                <input type="hidden" data-value="<?php echo $id ?>" id="si">
+                                                <input type="hidden" data-value="<?php echo $pss ?>" id="sp">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type=" text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript" src="../script/global-nav.js"></script>
+        <script type="text/javascript" src="../script/edt-candidate.js"></script>
+        <script type="text/javascript" src="../plugin/bootstable.js"></script>
+        </div>
     </body>
 
     </html>

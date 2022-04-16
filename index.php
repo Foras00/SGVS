@@ -33,6 +33,7 @@ if (isset($_POST['admin-submit'])) {
             session_start();
             $_SESSION['adminLoginSession'] = TRUE;
             $_SESSION['adminId'] = $adminID;
+            $_SESSION['passwrd'] = $adminPass;
             header('Location: ./admin-dashboard.php');
             exit;
         }else{
