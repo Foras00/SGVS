@@ -310,8 +310,6 @@ function chkOpen() {
             selectStat = "voter";
             $('#selections').val("voter")
         }
-
-
     }
     if (window.location.hash == "#party") {
         selectStat = "party";
@@ -383,7 +381,6 @@ function delCandidate() {
 }
 
 function edtVoter() {
-
     if ($('#vsubmit-btn').val() == "edit") {
         $('#vsubmit-btn').val('submit');
         $('#voter_id').prop("disabled", false);;

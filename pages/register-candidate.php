@@ -17,6 +17,7 @@ if (!isset($_SESSION['adminId'])) {
             if ($id != "" && $fname != "" && $lname != "" && $sec != "") {
                 $chk = "SELECT * FROM ".$pos."_TABLE WHERE ID = '$id'";
                 $q = mysqli_fetch_assoc(mysqli_query($con, $chk));
+                error_reporting(E_ERROR | E_PARSE);
                 $res = $q['id'];
                 if ($res > 0) {
                     $errmsg = "Candidate Already exists!!";

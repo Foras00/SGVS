@@ -11,6 +11,7 @@ if (!isset($_SESSION['adminId'])) {
         if ($id != "" && $pname != "") {
             $chk = "SELECT * FROM PARTY_TABLE WHERE PARTY_ID = '$id'";
             $q = mysqli_fetch_array(mysqli_query($con, $chk));
+            error_reporting(E_ERROR | E_PARSE);
             $res = $q['party_id'];  
             if ($res > 0) {
                 $errmsg = "Party Already exists!!";

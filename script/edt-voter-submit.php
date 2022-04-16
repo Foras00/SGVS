@@ -8,7 +8,6 @@ if ($vprocess == "edit") {
     $vs = $_POST['sec'];
     $sy = $_POST['sy'];
     $oldid = $_POST['candid'];
-
     if ($vid != "" && $vfn != "" && $vln != "" && $vs != "" && $sy != "") {
         $cand_query = "UPDATE VOTER_TABLE SET VOTER_ID = '" . $vid . "', VOTER_FNAME = '" . $vfn . "', VOTER_LNAME = '" . $vln . "', SECTION = '" . $vs . "', SCHOOL_YEAR = '" . $sy . "' WHERE VOTER_ID = '" . $oldid . "'";
         if (mysqli_query($con, $cand_query)) {

@@ -16,6 +16,7 @@ if (!isset($_SESSION['adminId'])) {
             if ($id != "" && $fname != "" && $lname != "" && $sec != "" && $sy != "") {
                 $chk = "SELECT * FROM VOTER_TABLE WHERE VOTER_ID = '$id'";
                 $q = mysqli_fetch_assoc(mysqli_query($con, $chk));
+                error_reporting(E_ERROR | E_PARSE);
                 $res = $q['voter_id'];
                 if ($res > 0) {
                     $errmsg = "Voter Already exists!!";
