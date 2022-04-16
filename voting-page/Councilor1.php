@@ -52,7 +52,7 @@ if (isset($_POST['btn1'])) {
 
 </head>
 
-<body>
+<body class="bac">
     <?php include "vote-nav.php" ?>
     <div class="content_container">
         <div class="dashboard-container">

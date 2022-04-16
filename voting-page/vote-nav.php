@@ -11,10 +11,3 @@
     </header>
 </div>
 
-<div class="Logout">
-
-
-
-
-
-</div>
