@@ -8,18 +8,35 @@ $vpcn = "";
 $vpname = "";
 $vpsection = "";
 
+
+
 # Vice President
-if (isset($_POST['vpress'])) {
-    $vpre = mysqli_real_escape_string($con, $_POST['party']);
-    $vpres = $con->query("SELECT * FROM VICEPRESIDENT_TABLE WHERE ID = $vpre");
+if (isset($_POST['vbtn'])) {
+    $vpre = $_POST['vselection'];
+    $vpres = $con->query("SELECT * FROM VICEPRESIDENT_TABLE WHERE ID = '$vpre'");
 
-
+ 
     if ($spv = mysqli_fetch_assoc($vpres)) {
-        $vcn = $sp['id'];
-        $vname = $sp['first_name'] + " " + $sp['last_name'];
-        $vsection = $sp['section'];
+        $vpcn = $spv['id'];
+        $vpname = "" . $spv['first_name'] . " " . $spv['last_name'] . "";
+        $vpsection = $spv['section'];
     }
 }
+if (isset($_POST['vbtn1'])) {
+    $vpre = $_POST['vpres'];
+    if ($vpre != "") {
+        session_start();
+        # next page 
+        $_SESSION['scc'] = $vpre;
+        header('Location: secretary.php');
+    } else {
+        echo "<script> alert('Please Select a Candidate') </script>";
+        # code...
+    }
+}
+
+
+
 
 
 ?>
@@ -46,42 +63,57 @@ if (isset($_POST['vpress'])) {
             <?php
             echo $fb;
             ?>
-            </h1> 
-            <div class="cards-container">
-                <div class="cards">
-                    <div class="card" name="card" id="card">
-                        <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($sp['candidate_image']); ?>" alt="Please select Candidate" onerror=this.src="../res/placeholder.png" class="candidate-image" id="image">
-                        <ul class="card-content">
-                            <li>
-                                <h1>Candidate NO.:
-                                    <input type="text" name="president" readonly value="<?php echo $vpcn; ?>" class="presi">
-                                </h1>
-                            </li>
-                            <li>
-                                <h1>Name: <input type="text" name="prname" readonly value="<?php echo $vpname; ?>" class="presi">
-                                </h1>
-                            </li>
-                            <li>
-                                <h1>Section: <input type="text" name="prname" readonly value="<?php echo $vpsection; ?>" class="presi">
-                                </h1>
-                            </li>
-                        </ul>
-                        <form method="POST">
-                            <select name="pparty" id="party" class="forms select-forms">
-                                <option value="none">none</option>
-                                <?php
-                                while ($vpres_row = mysqli_fetch_array($vpres)) {
-                                ?>
-                                    <option name="press" value="<?php echo $vpres_row['id']; ?>"><?php echo $vpres_row['id']; ?></option>
-                                <?php } ?>
-                            </select>
-                            <input type="submit" name="btn" class="subb">
-                        </form>
+            </h1>
+            <form method="POST">
+                <div class="cards-container">
+                    <div class="cards">
+                        <div class="card" name="card" id="card">
+                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($spv['candidate_image']); ?>" alt="Please select Candidate" onerror=this.src="../res/placeholder.png" class="candidate-image" id="image">
+                            <div class="card-content">
+
+                                <h5>Select Vice President Candidate</h5>
+                                <ul>
+                                    <li>
+                                        <h1>Candidate NO.:
+                                            <input type="text" name="vpres" value="<?php echo $vpcn; ?>" class="presi" readonly>
+                                        </h1>
+                                    </li>
+                                    <li>
+                                        <h1>Name: <input type="text" name="vprname" readonly value="<?php echo $vpname; ?>" class="presi">
+                                        </h1>
+                                    </li>
+                                    <li>
+                                        <h1>Section: <input type="text" name="vprname" readonly value="<?php echo $vpsection; ?>" class="presi">
+                                        </h1>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="selection-container">
+                                <h6>Select</h6>
+                                <select name="vselection" id="party" class="forms select-forms">
+                                    <option value="none">none</option>
+                                    <?php
+                                    while ($vpres_row = mysqli_fetch_array($vpres)) {
+                                    ?>
+                                        <option name="vpress" value="<?php echo $vpres_row['id']; ?>"><?php echo $vpres_row['id']; ?> <?php echo $vpres_row['last_name']; ?></option>
+                                    <?php } ?>
+                                </select>
+                                <input type="submit" name="vbtn" class="subb">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+
+                <input type="submit" name="vbtn1" class="sub1" value="NEXT">
+            </form>
         </div>
+
     </div>
 </body>
+
+<!-- these are the script tags for jQuery, note: jQuery will not work offline because of this -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 </html>
