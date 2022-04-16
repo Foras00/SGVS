@@ -12,7 +12,7 @@ body{
 .selection-container {
   width: 100%;
   display: flex;
-  margin-top: 7em;
+  margin-top: 6em;
   justify-content: center;
 }
 .selections {
@@ -32,7 +32,7 @@ body{
   border-radius: 100%;
 }
 .candidate-form {
-  margin-top: 9em;
+  margin-top: 8em;
   width: 100%;
   height: 80%;
   display: inline;
@@ -43,7 +43,7 @@ body{
   opacity: 40%;
 }
 .voter-form {
-  margin-top: 9em;
+  margin-top: 8em;
   width: 100%;
   height: 80%;
   display: inline;
@@ -54,7 +54,7 @@ body{
   opacity: 40%;
 }
 .party-form{
-  margin-top: 9em;
+  margin-top: 8em;
   width: 100%;
   height: 80%;
   display: inline;

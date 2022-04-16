@@ -102,16 +102,21 @@ $(document).ready(function () {
     $('#del-btn').click(function () {
         delCandidate();
     });
-
-
-
+    //Delete Voter Button   
     $('#vsubmit-btn').click(function () {
         edtVoter();
     });
     $('vdel-btn').click(function () {
-
-
+        delVoter();
     });
+    //Delete Party Button
+    $('#psubmit-btn').click(function () {
+        edtParty();
+    });
+    $('#pdel-btn').click(function () {
+        delParty();
+    });
+
 
 
     $('#submit-confirmation').click(function () {
@@ -270,10 +275,62 @@ $(document).ready(function () {
                         }
                     });
                 }
+            } else if (window.location.hash == "#party") {
+                if (confProcess == "edit") {
+                    $('#vsubmit-btn').val('edit');
+                    $('#party_id').prop("disabled", true);;
+                    $('#party_n').prop("disabled", true);
+                    $.ajax({
+                        url: "../script/edt-party-submit.php",
+                        type: "POST",
+                        datatype: "json",
+                        action: "edit",
+                        data: {
+                            id: $('#party_id').val(),
+                            n: $('#party_n').val(),
+                            oldpid: $('#getpid').val(),
+                            action: "edit",
+                        },
+                        success: function (dataResult2) {
+                            if (dataResult2 == "success") {
+                                alert('Voter has been updated successfully!');
+                                $('#party_id').val([]);
+                                $('#party_n').val([]);
+                                $('#getpid').val([]);
+                                location.reload();
+
+                            } else {
+                                alert('Error! Party ID is already Taken!');
+                            }
+                            console.log(dataResult2);
+                        }
+                    });
+                } else if (confProcess == "delete") {
+                    $.ajax({
+                        url: "../script/edt-party-submit.php",
+                        type: "POST",
+                        datatype: "json",
+                        data: {
+                            id: $('#party_id').val(),
+                            action: "delete",
+                        },
+                        success: function (dataResult) {
+                            if (dataResult == "success") {
+                                alert('Party has been Deleted successfully!');
+                                $('#party_id').val([]);
+                                $('#party_n').val([]);
+                                $('#getpid').val([]);
+                                location.reload();
+                            } else {
+                                alert('Voter Deletion Failed');
+                            }
+                            console.log(dataResult);
+                        }
+                    });
+                }
             }
-        } else {
-            document.getElementById('conf-err').innerHTML = "Wrong ID or Password";
         }
+
     });
 
 
@@ -311,10 +368,17 @@ function chkOpen() {
             $('#selections').val("voter")
         }
     }
-    
+
     if (window.location.hash == "#party") {
-        selectStat = "party";
-        $('#selections').val("party")
+        if ($(".party-form").toggleClass('conf-animation')) {
+            $('.party-form').css("visiblity", "visible");
+            selectStat = "party";
+            $('#selections').val("party")
+        } else {
+            $(".party-form").toggleClass('conf-animation');
+            selectStat = "party";
+            $('#selections').val("party")
+        }
     }
 }
 
@@ -341,6 +405,9 @@ function chkvisible() {
         $('#getvid').val([]);
     }
     if (selectStat != "party") {
+        $('#party_id').val([]);
+        $('#party_n').val([]);
+        $('getpid').val([]);
     }
 
 }
@@ -355,6 +422,11 @@ function chkPop() {
         $('#vsubmit-btn').prop("disabled", false);
     } else {
         $('#vsubmit-btn').prop("disabled", true);
+    }
+    if ($('#party_id').val() != "" && $('#party_n').val() != "") {
+        $('#psubmit-btn').prop("disabled", false);
+    } else {
+        $('#psubmit-btn').prop("disabled", true);
     }
 }
 
@@ -397,6 +469,25 @@ function edtVoter() {
     }
 }
 function delVoter() {
+    $('.confirmation').toggleClass('conf-animation');
+    confProcess = "delete";
+}
+
+function edtParty() {
+    if ($('#psubmit-btn').val() == "edit") {
+        $('#psubmit-btn').val('submit');
+        $('#party_id').prop("disabled", false);
+        $('#party_n').prop("disabled", false);
+        $('#pdel-btn').prop("disabled", false);
+
+
+
+    } else {
+        $('.confirmation').toggleClass('conf-animation');
+        confProcess = "edit";
+    }
+}
+function delParty() {
     $('.confirmation').toggleClass('conf-animation');
     confProcess = "delete";
 }
