@@ -20,6 +20,19 @@ if (isset($_POST['btn'])) {
         $c4section = $spc4['section'];
     }
 }
+if (isset($_POST['btn1'])) {
+    $c4tre = $_POST['c4pres'];
+
+    if ($c4tre != "") {
+        session_start();
+        $_SESSION['cc5'] = $c4tre;
+        header('Location: councilor5.php');
+        # code...
+    } else {
+        echo "<script> alert('Please Select a Candidate') </script>";
+    }
+    # code...
+}
 ?>
 <!DOCTYPE html>
 
@@ -56,7 +69,7 @@ if (isset($_POST['btn'])) {
                                 <ul>
                                     <li>
                                         <h1>Candidate NO.:
-                                            <input type="text" name="tpres" value="<?php echo $c4cn; ?>" class="presi" readonly>
+                                            <input type="text" name="c4pres" value="<?php echo $c4cn; ?>" class="presi" readonly>
                                         </h1>
                                     </li>
                                     <li>

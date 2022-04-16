@@ -42,7 +42,7 @@ if (isset($_POST['btn'])) {
         <div class="dashboard-container">
             <h1 class="card-title">Councilor
                 <?php
-                echo $cl4;
+                echo $cl5;
                 ?>
             </h1>
             <form method="POST">
@@ -52,7 +52,7 @@ if (isset($_POST['btn'])) {
                             <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($spc4['candidate_image']); ?>" alt="Please select Candidate" onerror=this.src="../res/placeholder.png" class="candidate-image" id="image">
                             <div class="card-content">
 
-                                <h5>Select 4rt Councilor Candidate</h5>
+                                <h5>Select 5ft Councilor Candidate</h5>
                                 <ul>
                                     <li>
                                         <h1>Candidate NO.:
