@@ -55,7 +55,7 @@ if (isset($_POST['btn1'])) {
         <div class="dashboard-container">
             <h1 class="card-title">Councilor
                 <?php
-                echo $cl4;
+                echo $c4name;
                 ?>
             </h1>
             <form method="POST">

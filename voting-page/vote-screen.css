@@ -1,16 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
-@import url("global-nav-style.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 /*Home page*/
 @import url("../style/global-nav-style.css");
 
 body {
-  height: 100%;
+  height: auto;
   margin: 10;
+  width:100%;
   background-image: url("../res/bluebg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -28,6 +25,7 @@ body {
 }
 
 .content-container {
+  background-color: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -69,9 +67,10 @@ body {
 }
 
 .card-title {
-  color: aliceblue;
-  text-shadow: 1px 1px 1px red,
-    2px 2px 1px red; 
+  color: white;
+  font: bold;
+  text-shadow: 1px 1px 1px blue,
+               2px 2px 1px gray;
   font: italic normal bold normal 3em/1.5 Helvetica, Arial, sans-serif;
 
 }
