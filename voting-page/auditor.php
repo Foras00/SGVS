@@ -1,33 +1,32 @@
 <?php
 include "../config.php";
-$treasurer = $con->query("SELECT * FROM TREASURER_TABLE");
-$tts = $_SESSION['trt'];
+$auditor = $con->query("SELECT * FROM AUDITOR_TABLE");
+$aus = $_SESSION['auu'];
 
+# Auditor
+$acn = "";
+$aname = "";
+$asection = "";
 
-# Treasurer
-$tcn = "";
-$tname = "";
-$tsection = "";
-
-# Treasurer
+# Auditor
 if (isset($_POST['btn'])) {
-    $tra = $_POST['selection'];
-    $teas = $con->query("SELECT * FROM TREASURER_TABLE WHERE ID = '$tra'");
+    $aud = $_POST['selection'];
+    $teas = $con->query("SELECT * FROM AUDITOR_TABLE WHERE ID = '$aud'");
 
 
-    if ($spt = mysqli_fetch_assoc($teas)) {
-        $tcn = $spt['id'];
-        $tname = "" . $spt['first_name'] . " " . $spt['last_name'] . "";
-        $tsection = $spt['section'];
+    if ($spa = mysqli_fetch_assoc($teas)) {
+        $acn = $spa['id'];
+        $aname = "" . $spa['first_name'] . " " . $spa['last_name'] . "";
+        $asection = $spa['section'];
     }
 }
 if (isset($_POST['btn1'])) {
-    $tre = $_POST['tpres'];
+    $tre = $_POST['c1pres'];
 
     if ($tre != "") {
         session_start();
-        $_SESSION['auu'] = $tre;
-        header('Location: auditor.php');
+        $_SESSION['cc1'] = $tre;
+        header('Location: Councilor1.php');
         # code...
     } else {
         echo "<script> alert('Please Select a Candidate') </script>";
@@ -36,13 +35,9 @@ if (isset($_POST['btn1'])) {
     # code...
 }
 
-
-
-
-
-
-
 ?>
+
+
 
 <!DOCTYPE html>
 
@@ -63,31 +58,31 @@ if (isset($_POST['btn1'])) {
     <?php include "vote-nav.php" ?>
     <div class="content_container">
         <div class="dashboard-container">
-            <h1 class="card-title">Treasurer
-            <?php
-            echo $tts;
-            ?>
+            <h1 class="card-title">Auditor
+                <?php
+                echo $aus;
+                ?>
             </h1>
             <form method="POST">
                 <div class="cards-container">
                     <div class="cards">
                         <div class="card" name="card" id="card">
-                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($spt['candidate_image']); ?>" alt="Please select Candidate" onerror=this.src="../res/placeholder.png" class="candidate-image" id="image">
+                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($spa['candidate_image']); ?>" alt="Please select Candidate" onerror=this.src="../res/placeholder.png" class="candidate-image" id="image">
                             <div class="card-content">
 
-                                <h5>Select Treasurer Candidate</h5>
+                                <h5>Select Auditor Candidate</h5>
                                 <ul>
                                     <li>
                                         <h1>Candidate NO.:
-                                            <input type="text" name="tpres" value="<?php echo $tcn; ?>" class="presi" readonly>
+                                            <input type="text" name="c1pres" value="<?php echo $acn; ?>" class="presi" readonly>
                                         </h1>
                                     </li>
                                     <li>
-                                        <h1>Name: <input type="text" name="prname" readonly value="<?php echo $tname; ?>" class="presi">
+                                        <h1>Name: <input type="text" name="prname" readonly value="<?php echo $aname; ?>" class="presi">
                                         </h1>
                                     </li>
                                     <li>
-                                        <h1>Section: <input type="text" name="prname" readonly value="<?php echo $tsection; ?>" class="presi">
+                                        <h1>Section: <input type="text" name="prname" readonly value="<?php echo $asection; ?>" class="presi">
                                         </h1>
                                     </li>
                                 </ul>
@@ -97,9 +92,9 @@ if (isset($_POST['btn1'])) {
                                 <select name="selection" id="party" class="forms select-forms">
                                     <option value="none">none</option>
                                     <?php
-                                    while ($treasurer_row = mysqli_fetch_array($treasurer)) {
+                                    while ($auditor_row = mysqli_fetch_array($auditor)) {
                                     ?>
-                                        <option name="press" value="<?php echo $treasurer_row['id']; ?>"><?php echo $treasurer_row['id']; ?> <?php echo $treasurer_row['last_name']; ?></option>
+                                        <option name="press" value="<?php echo $auditor_row['id']; ?>"><?php echo $auditor_row['id']; ?> <?php echo $auditor_row['last_name']; ?></option>
                                     <?php } ?>
                                 </select>
                                 <input type="submit" name="btn" class="subb">
@@ -115,6 +110,3 @@ if (isset($_POST['btn1'])) {
 
     </div>
 </body>
-
-
-</html>

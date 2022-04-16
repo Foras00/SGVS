@@ -11,10 +11,10 @@ $ssection = "";
 # Secretary
 if (isset($_POST['btn'])) {
     $spre = $_POST['selection'];
-    $secretary = $con->query("SELECT * FROM SECRETARY_TABLE WHERE ID = $spre");
+    $sec = $con->query("SELECT * FROM SECRETARY_TABLE WHERE ID = $spre");
 
 
-    if ($sps = mysqli_fetch_assoc($secretary)) {
+    if ($sps = mysqli_fetch_assoc($sec)) {
         $scn = $sps['id'];
         $sname = "" . $sps['first_name'] . " " . $sps['last_name'] . "";
         $ssection = $sps['section'];

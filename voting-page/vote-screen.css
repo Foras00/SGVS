@@ -7,9 +7,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 /*Home page*/
 @import url("../style/global-nav-style.css");
+
+body {
+  height: 100%;
+  margin: 10;
+  background-image: url("../res/bluebg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(49, 49, 49);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 * {
   box-sizing: border-box;
 }
+
 .content-container {
   display: flex;
   justify-content: center;
@@ -17,11 +34,14 @@
   height: 100%;
   width: 100%;
   margin-top: 4em;
+
 }
+
 .dashboard-container {
   margin-left: 20%;
   margin-right: 20%;
 }
+
 .cards-container {
   height: auto;
   display: flex;
@@ -31,6 +51,7 @@
   scroll-behavior: smooth;
   white-space: nowrap;
 }
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -40,15 +61,21 @@
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
 .cards {
   width: 80em;
   padding-top: 1em;
   padding-bottom: 1em;
 }
+
 .card-title {
-  color: white;
-  font-size: 1.5em;
+  color: aliceblue;
+  text-shadow: 1px 1px 1px red,
+    2px 2px 1px red; 
+  font: italic normal bold normal 3em/1.5 Helvetica, Arial, sans-serif;
+
 }
+
 .card {
   margin-left: 5em;
   margin-right: 0.5em;
@@ -65,6 +92,7 @@
   cursor: pointer;
   vertical-align: middle;
 }
+
 @media screen and (max-width: 600px) {
   .card {
     width: 100%;
@@ -72,6 +100,7 @@
     margin-bottom: 20px;
   }
 }
+
 .card:hover {
   box-shadow: 0.5em 0.3em #119ced;
 }
@@ -83,18 +112,22 @@
   object-fit: cover;
   align-self: center;
 }
+
 .card-content {
   margin: 0;
   font-family: "Poiret One", cursive;
   margin-left: 1em;
 }
+
 ul {
   padding: 0;
 }
+
 li {
   list-style-type: none;
 }
-li > h1 {
+
+li>h1 {
   font-size: 15px;
 }
 
@@ -112,8 +145,9 @@ li > h1 {
 .subb {
   border-radius: 12px;
 }
+
 .subb:hover {
-  background-color:#119ced;
+  background-color: #119ced;
   color: white;
 }
 
@@ -123,9 +157,10 @@ li > h1 {
   width: 10em;
   float: right;
 }
-.sub1:hover{
-background-color: #119ced;
-color: white;
+
+.sub1:hover {
+  border-right-color: #119ced;
+  color: white;
 }
 
 /* <select> style */
@@ -134,7 +169,8 @@ color: white;
   justify-content: center;
   margin-bottom: .5em;
 }
-.selection-container > select {
+
+.selection-container>select {
   width: 8em;
   outline: none;
   border-radius: 1em;
@@ -142,7 +178,7 @@ color: white;
   padding-left: .5em;
 }
 
-.selection-container > h6{
+.selection-container>h6 {
   font-family: "roboto";
   margin-right: .5em;
 }
