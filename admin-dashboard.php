@@ -3,7 +3,7 @@ include "./config.php";
 $id = $_SESSION['adminId'];
 
 //checks if the Session "adminId" has been initiated in index.php
-if (!isset($_SESSION['adminId'])) {
+if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
     header('Location: err.php');
 } else {
     //Gets the values of each table for the cards in the dashboard 
