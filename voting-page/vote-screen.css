@@ -7,7 +7,7 @@
 body {
   height: auto;
   margin: 10;
-  width:100%;
+  width: 100%;
   background-image: url("../res/bluebg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@ body {
 }
 
 .content-container {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -70,7 +70,7 @@ body {
   color: white;
   font: bold;
   text-shadow: 1px 1px 1px blue,
-               2px 2px 1px gray;
+    2px 2px 1px gray;
   font: italic normal bold normal 3em/1.5 Helvetica, Arial, sans-serif;
 
 }
