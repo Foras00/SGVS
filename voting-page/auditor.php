@@ -60,7 +60,7 @@ if (isset($_POST['btn1'])) {
         <div class="dashboard-container">
             <h1 class="card-title">Auditor
                 <?php
-                echo $aus;
+                echo $aname;
                 ?>
             </h1>
             <form method="POST">

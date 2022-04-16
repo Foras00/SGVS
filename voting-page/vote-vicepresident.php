@@ -61,7 +61,7 @@ if (isset($_POST['vbtn1'])) {
         <div class="dashboard-container">
             <h1 class="card-title">Vice Presidents
             <?php
-            echo $fb;
+            echo $vpname;
             ?>
             </h1>
             <form method="POST">

@@ -65,7 +65,9 @@ if (isset($_GET['back'])) {
         <?php include "vote-nav.php" ?>
         <div class="content_container">
             <div class="dashboard-container">
-                <h1 class="card-title">Presidents</h1>
+                <h1 class="card-title">Presidents
+                <?php echo $pname; ?>
+                </h1>
                 <form method="POST">
                     <div class="cards-container">
                         <div class="cards">
