@@ -21,7 +21,7 @@ if (isset($_POST['btn'])) {
     }
 }
 if (isset($_POST['btn1'])) {
-    $tre = $_POST['apres'];
+    $tre = $_POST['c1pres'];
 
     if ($tre != "") {
         session_start();
@@ -74,7 +74,7 @@ if (isset($_POST['btn1'])) {
                                 <ul>
                                     <li>
                                         <h1>Candidate NO.:
-                                            <input type="text" name="apres" value="<?php echo $acn; ?>" class="presi" readonly>
+                                            <input type="text" name="c1pres" value="<?php echo $acn; ?>" class="presi" readonly>
                                         </h1>
                                     </li>
                                     <li>

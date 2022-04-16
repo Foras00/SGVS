@@ -1,42 +1,26 @@
 <?php
 include "../config.php";
-$councilor1 = $con->query("SELECT * FROM COUNCILOR_TABLE");
-$cl1 = $_SESSION['cc1'];
+$councilor4 = $con->query("SELECT * FROM COUNCILOR_TABLE");
+$cl4 = $_SESSION['cc4'];
 
-# Councilor1
-$c1cn = "";
-$c1name = "";
-$c1section = "";
+# Councilor4
+$c4cn = "";
+$c4name = "";
+$c4section = "";
 
-# Councilor1
+# Councilor4
 if (isset($_POST['btn'])) {
-    $ccl1 = $_POST['selection'];
-    $coun = $con->query("SELECT * FROM COUNCILOR_TABLE WHERE ID = '$ccl1'");
+    $ccl4 = $_POST['c2selection'];
+    $coun = $con->query("SELECT * FROM COUNCILOR_TABLE WHERE ID = '$ccl4'");
 
 
-    if ($spc = mysqli_fetch_assoc($coun)) {
-        $c1cn = $spc['id'];
-        $c1name = "" . $spc['first_name'] . " " . $spc['last_name'] . "";
-        $c1section = $spc['section'];
+    if ($spc4 = mysqli_fetch_assoc($coun)) {
+        $c4cn = $spc4['id'];
+        $c4name = "" . $spc4['first_name'] . " " . $spc4['last_name'] . "";
+        $c4section = $spc4['section'];
     }
-}
-
-if (isset($_POST['btn1'])) {
-    $ctre = $_POST['c1pres'];
-
-    if ($ctre != "") {
-        session_start();
-        $_SESSION['ctc2'] = $ctre;
-        header('Location: councilor2.php');
-        # code...
-    } else {
-        echo "<script> alert('Please Select a Candidate') </script>";
-
-    }
-    # code...
 }
 ?>
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -48,7 +32,7 @@ if (isset($_POST['btn1'])) {
 
     <link rel="stylesheet" href="vote-screen.css">
     <meta charset="UTF-8">
-    <title>Councilor1</title>
+    <title>Councilor4</title>
 
 </head>
 
@@ -58,41 +42,41 @@ if (isset($_POST['btn1'])) {
         <div class="dashboard-container">
             <h1 class="card-title">Councilor
                 <?php
-                echo $cl1;
+                echo $cl4;
                 ?>
             </h1>
             <form method="POST">
                 <div class="cards-container">
                     <div class="cards">
                         <div class="card" name="card" id="card">
-                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($spc['candidate_image']); ?>" alt="Please select Candidate" onerror=this.src="../res/placeholder.png" class="candidate-image" id="image">
+                            <img src="data:image/jpg;charset=utf8;base64, <?php echo base64_encode($spc4['candidate_image']); ?>" alt="Please select Candidate" onerror=this.src="../res/placeholder.png" class="candidate-image" id="image">
                             <div class="card-content">
 
-                                <h5>Select 1st Councilor Candidate</h5>
+                                <h5>Select 4rt Councilor Candidate</h5>
                                 <ul>
                                     <li>
                                         <h1>Candidate NO.:
-                                            <input type="text" name="c1pres" value="<?php echo $c1cn; ?>" class="presi" readonly>
+                                            <input type="text" name="tpres" value="<?php echo $c4cn; ?>" class="presi" readonly>
                                         </h1>
                                     </li>
                                     <li>
-                                        <h1>Name: <input type="text" name="prname" readonly value="<?php echo $c1name; ?>" class="presi">
+                                        <h1>Name: <input type="text" name="prname" readonly value="<?php echo $c4name; ?>" class="presi">
                                         </h1>
                                     </li>
                                     <li>
-                                        <h1>Section: <input type="text" name="prname" readonly value="<?php echo $c1section; ?>" class="presi">
+                                        <h1>Section: <input type="text" name="prname" readonly value="<?php echo $c4section; ?>" class="presi">
                                         </h1>
                                     </li>
                                 </ul>
                             </div>
                             <div class="selection-container">
                                 <h6>Select</h6>
-                                <select name="selection" id="party" class="forms select-forms">
+                                <select name="c2selection" id="party" class="forms select-forms">
                                     <option value="none">none</option>
                                     <?php
-                                    while ($councilor1_row = mysqli_fetch_array($councilor1)) {
+                                    while ($councilor4_row = mysqli_fetch_array($councilor4)) {
                                     ?>
-                                        <option name="press" value="<?php echo $councilor1_row['id']; ?>"><?php echo $councilor1_row['id']; ?> <?php echo $councilor1_row['last_name']; ?></option>
+                                        <option name="press" value="<?php echo $councilor4_row['id']; ?>"><?php echo $councilor4_row['id']; ?> <?php echo $councilor4_row['last_name']; ?></option>
                                     <?php } ?>
                                 </select>
                                 <input type="submit" name="btn" class="subb">
