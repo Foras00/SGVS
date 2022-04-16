@@ -25,7 +25,7 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
         $input = mysqli_real_escape_string($con, $_POST['cand_searchbar']);
         $pos = mysqli_real_escape_string($con, $_POST['position']);
         if ($pos == "select") {
-            $search_errmsg = "Please Select Position";
+            $csearch_errmsg = "Please Select Position";
         } else {
             if (!"" == $input) {
                 $sq = $con->query("SELECT * FROM " . $pos . "_TABLE WHERE ID = $input");
@@ -113,7 +113,7 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
                 <div class="search-container">
                     <h5 style="color: white; font-family:'roboto';">Select Candidate Position</h5>
                     <form method="POST" action="">
-                        <select name="position" id="position" class="search">
+                        <select name="position" id="position"  class="search">
                             <option value="select">Select</option>
                             <option value="PRESIDENT">President</option>
                             <option value="VICEPRESIDENT">Vice President</option>
@@ -124,9 +124,9 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
                         </select>
 
                         <input type="text" name="cand_searchbar" id="cand_sb" class="search" placeholder="Search by ID">
-                        <input type="submit" value="Search">
+                        <input type="submit" value="Search" class="conf-btn">
                     </form>
-                    <p name="search_erremg" id="search_erremg" style="color: white;"><?php echo $csearch_errmsg ?></p>
+                    <p name="search_erremg" id="search_erremg" style="color: white;"> <?php echo $csearch_errmsg ?> </p>
                 </div>
                 <div class="form-container">
                     <div class="form-contents">
@@ -160,8 +160,8 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
                             </select>
 
                             <div class="submit-btn">
-                                <input type="submit" name="submit-btn" id="submit-btn" value="edit" class="candidate-infos" disabled="true">
-                                <input type="submit" name="del-btn" id="del-btn" value="delete" class="candidate-infos" disabled="true">
+                                <input type="submit" name="submit-btn" id="submit-btn" value="edit" class="edt-btns" disabled="true">
+                                <input type="submit" name="del-btn" id="del-btn" value="delete" class="edt-btns" disabled="true">
                             </div>
                         </div>
                     </div>
@@ -173,9 +173,9 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
                     <form method="POST" action="">
                         <h5 style="color: white; font-family:'roboto';">Search Voter</h5>
                         <input type="text" name="voter_searchbar" id="voter_sb" class="search" placeholder="Search">
-                        <input type="submit" value="Search">
+                        <input type="submit" value="Search" class="conf-btn">
                     </form>
-                    <p name="search_erremg" id="search_erremg" style="color: white;"><?php echo $vsearch_errmsg ?></p>S
+                    <p name="search_erremg" id="search_erremg" style="color: white;"><?php echo $vsearch_errmsg ?></p>
                 </div>
                 <div class="form-container">
                     <div class="form-contents">
@@ -192,8 +192,8 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
                             <h4>School Year: <?php echo $voter_sy ?></h4>
                             <input type="text" name="lname" id="voter_sy" class="candidate-infos" value="<?php echo $voter_sy ?>" disabled="true">
                             <div class="submit-btn">
-                                <input type="submit" name="vsubmit-btn" id="vsubmit-btn" value="edit" class="candidate-infos" disabled="true">
-                                <input type="submit" name="vdel-btn" id="vdel-btn" value="delete" class="candidate-infos" disabled="true">
+                                <input type="submit" name="vsubmit-btn" id="vsubmit-btn" value="edit" class="edt-btns" disabled="true">
+                                <input type="submit" name="vdel-btn" id="vdel-btn" value="delete" class="edt-btns" disabled="true">
                             </div>
                         </div>
                     </div>
@@ -205,9 +205,9 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
                     <form method="POST" action="">
                         <h5 style="color: white; font-family:'roboto';">Search Voter</h5>
                         <input type="text" name="party_searchbar" id="party_sb" class="search" placeholder="Search">
-                        <input type="submit" value="Search">
+                        <input type="submit" value="Search" class="conf-btn">
                     </form>
-                    <p name="search_erremg" id="search_erremg" style="color: white;"><?php echo $vsearch_errmsg ?></p>S
+                    <p name="search_erremg" id="search_erremg" style="color: white;"><?php echo $vsearch_errmsg ?></p>
                 </div>
                 <div class="form-container">
                     <div class="form-contents">
@@ -218,8 +218,8 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
                             <h4>First Name: <?php echo $voter_fn ?></h4>
                             <input type="text" name="fname" id="voter_fn" class="candidate-infos" value="<?php echo $voter_fn ?>" disabled="true">
                             <div class="submit-btn">
-                                <input type="submit" name="vsubmit-btn" id="vsubmit-btn" value="edit" class="candidate-infos" disabled="true">
-                                <input type="submit" name="vdel-btn" id="vdel-btn" value="delete" class="candidate-infos" disabled="true">
+                                <input type="submit" name="vsubmit-btn" id="vsubmit-btn" value="edit" class="edt-btns" disabled="true">
+                                <input type="submit" name="vdel-btn" id="vdel-btn" value="delete" class="edt-btns" disabled="true">
                             </div>
                         </div>
                     </div>

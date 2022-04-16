@@ -22,7 +22,6 @@ if (!isset($_SESSION['adminId'])) {
                 if ($res > 0) {
                     $errmsg = "Candidate Already exists!!";
                 } else {
-
                     $img = "image/" . $_FILES['f1']['name'];
                     $imgData = addslashes(file_get_contents($_FILES['f1']['tmp_name']));
                     $query = "INSERT INTO " . $pos . "_table (id, first_name, last_name, party_id, section, candidate_image) 

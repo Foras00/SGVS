@@ -311,6 +311,7 @@ function chkOpen() {
             $('#selections').val("voter")
         }
     }
+    
     if (window.location.hash == "#party") {
         selectStat = "party";
         $('#selections').val("party")
