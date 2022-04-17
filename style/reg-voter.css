@@ -1,0 +1,93 @@
+@import url("global-nav-style.css");
+
+.main-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.forms-container {
+  color: white;
+  background-color: rgb(43, 43, 43);
+  font-family: "Roboto", sans-serif;
+  width: 30rem;
+  display: flex;
+  justify-content: center;
+  border-left: 1px white solid;
+  border-right: 1px white solid;
+}
+.forms-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1em;
+}
+.forms-list li {
+  display: flex;
+}
+.forms {
+  font-size: 2rem;
+  height: 2.5rem;
+  text-align: center;
+  border-radius: 1em;
+  color: white;
+  background-color: transparent;
+  border: 2px white solid;
+  outline: none;
+  transition: 300ms linear;
+}
+.forms:focus {
+  border: 2px #119ced solid;
+}
+.forms * {
+  color: black;
+}
+.select-forms {
+  font-size: 2rem;
+  width: 15rem;
+}
+.register-forms {
+  margin-top: 0.5em;
+}
+h4 {
+  font-size: 1.5rem;
+}
+.image {
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 1s linear;
+}
+.image:hover {
+  border: 5px #119ced solid;
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+.reg-btn-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.reg-btn {
+  outline: none;
+  background-color: white;
+  width: 15rem;
+  border-radius: 1em;
+  font-size: 2rem;
+  transition: 300ms linear;
+}
+.reg-btn:hover {
+  background-color: #119ced;
+  color: white;
+}
+.img-selector {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+p {
+  text-align: center;
+}

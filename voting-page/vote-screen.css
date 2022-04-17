@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+/*Home page*/
+@import url("../style/global-nav-style.css");
+
+body {
+  height: auto;
+  margin: 10;
+  width: 100%;
+  background-image: url("../res/bluebg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(49, 49, 49);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.content-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin-top: 4em;
+
+}
+
+.dashboard-container {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.cards-container {
+  height: auto;
+  display: flex;
+  width: 100%;
+  text-align: center;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+.cards {
+  width: 80em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.card-title {
+  color: white;
+  font: bold;
+  text-shadow: 1px 1px 1px blue,
+    2px 2px 1px gray;
+  font: italic normal bold normal 3em/1.5 Helvetica, Arial, sans-serif;
+
+}
+
+.card {
+  margin-left: 5em;
+  margin-right: 0.5em;
+  width: 20em;
+  height: 30em;
+  display: inline-block;
+  overflow: hidden;
+  text-align: left;
+  color: white;
+  background-color: rgb(29, 29, 29);
+  border-radius: 1em;
+  box-shadow: 0.5em 0.3em white;
+  transition: 300ms linear;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.card:hover {
+  box-shadow: 0.5em 0.3em #119ced;
+}
+
+.candidate-image {
+  width: 20em;
+  height: 20em;
+  border-radius: 1em 1em 0 0;
+  object-fit: cover;
+  align-self: center;
+}
+
+.card-content {
+  margin: 0;
+  font-family: "Poiret One", cursive;
+  margin-left: 1em;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+li>h1 {
+  font-size: 15px;
+}
+
+
+
+
+.presi {
+  color: white;
+  background-color: rgb(29, 29, 29);
+  border: none;
+  width: 15em;
+}
+
+/* selection submit button style */
+.subb {
+  border-radius: 12px;
+  transition: 300ms;
+}
+
+.subb:hover {
+  background-color: #119ced;
+  color: white;
+}
+
+/* submit candidate vote button style */
+.sub1 {
+  border-radius: 12px;
+  width: 10em;
+  float: right;
+}
+
+.sub1:hover {
+  border-right-color: #119ced;
+  color: white;
+}
+
+/* <select> style */
+.selection-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: .5em;
+}
+
+.selection-container>select {
+  width: 8em;
+  outline: none;
+  border-radius: 1em;
+  cursor: pointer;
+  padding-left: .5em;
+}
+
+.selection-container>h6 {
+  font-family: "roboto";
+  margin-right: .5em;
+}
