@@ -1,8 +1,13 @@
 <?php
 include "../config.php";
 $councilor2 = $con->query("SELECT * FROM COUNCILOR_TABLE");
-$cl2 = $_SESSION['ctc2'];
-
+if(!isset($_SESSION['barcode'])){
+    session_destroy();
+    header('Location: ../index.php');
+}else if(!isset($_SESSION['councilor1'])){
+    header('Location: Councilor1.php');
+}else{
+echo "<sccript> console.log('".$_SESSION['councilor1']."') </script>";
 # Councilor2
 $c2cn = "";
 $c2name = "";
@@ -27,7 +32,7 @@ if (isset($_POST['btn1'])) {
 
     if ($c2tre != "") {
         session_start();
-        $_SESSION['cc3'] = $c2tre;
+        $_SESSION['councilor2'] = $c2tre;
         header('Location: councilor3.php');
         # code...
     } else {
@@ -109,3 +114,4 @@ if (isset($_POST['btn1'])) {
 
     </div>
 </body>
+<?php } ?>

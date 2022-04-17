@@ -1,11 +1,14 @@
 <?php
 include "./config.php";
-$id = $_SESSION['adminId'];
+
 
 //checks if the Session "adminId" has been initiated in index.php
 if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
     header('Location: err.php');
 } else {
+    $id = $_SESSION['adminId'];
+    $pss = $_SESSION['passwrd'];
+
     //Gets the values of each table for the cards in the dashboard 
     $pres = $con->query("SELECT * FROM PRESIDENT_TABLE");
     $vpres = $con->query("SELECT * FROM VICEPRESIDENT_TABLE");
@@ -209,8 +212,61 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
                 </div>
             </div>
 
-        </div>
+            <div class="reset-btn-container">
+                <input type="submit" id="reset" class="opt-btn" value="Reset Database">
+                <input type="submit" id="print" class="opt-btn" value="Print Winning Candidates">
+            </div>
 
+        </div>
+        <div class="confirmation" id="conf">
+
+            <div class="inputs">
+                <h5 style="font-family: 'roboto'; color: white;">Confirm Identity</h5>
+                <h5 id="conf-err" class="conf-err"></h5>
+                <input type="text" name="input-id" id="input-id" placeholder="Admin ID" class="field aid">
+                <input type="password" name="input-pass" id="input-pass" placeholder="Password" class="field">
+                <input type="submit" name="submit-cofirmation" id="confirm" value="Confirm" class="conf-btn">
+                <input type="submit" name="cancel-confirmation" id="cancel" value="Cancel" class="conf-btn">
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <input type="hidden" data-value="<?php echo $id ?>" id="si">
+                                            <input type="hidden" data-value="<?php echo $pss ?>" id="sp">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- these are the script tags for jQuery, note: jQuery will not work offline because of this -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -218,8 +274,10 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
         <!-- these are the script tags for the local scripts located at the script folder-->
         <script type="text/javascript" src="./script/global-nav.js"></script>
         <script type="text/javascript" src="./script/admin-dashboard.js"></script>
-        </div>
 
+
+
+        </div>
     </body>
 
     </html>

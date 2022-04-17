@@ -1,7 +1,12 @@
 <?php
 include "../config.php";
 $vpres = $con->query("SELECT * FROM VICEPRESIDENT_TABLE");
-$fb = $_SESSION['ppr'];
+if(!isset($_SESSION['barcode'])){
+    session_destroy();
+    header('Location: ../index.php');
+}else if(!isset($_SESSION['president'])){
+    header('Location: vote-president.php');
+}else{
 
 # Vice President
 $vpcn = "";
@@ -27,7 +32,7 @@ if (isset($_POST['vbtn1'])) {
     if ($vpre != "") {
         session_start();
         # next page 
-        $_SESSION['scc'] = $vpre;
+        $_SESSION['vice_president'] = $vpre;
         header('Location: secretary.php');
     } else {
         echo "<script> alert('Please Select a Candidate') </script>";
@@ -117,3 +122,4 @@ if (isset($_POST['vbtn1'])) {
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 </html>
+<?php } ?>

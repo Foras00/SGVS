@@ -1,7 +1,12 @@
 <?php
 include "../config.php";
 $councilor4 = $con->query("SELECT * FROM COUNCILOR_TABLE");
-$cl4 = $_SESSION['cc4'];
+if(!isset($_SESSION['barcode'])){
+    session_destroy();
+    header('Location: ../index.php');
+}else if(!isset($_SESSION['councilor3'])){
+    header('Location: councilor3.php');
+}else{
 
 # Councilor4
 $c4cn = "";
@@ -25,7 +30,7 @@ if (isset($_POST['btn1'])) {
 
     if ($c4tre != "") {
         session_start();
-        $_SESSION['cc5'] = $c4tre;
+        $_SESSION['councilor4'] = $c4tre;
         header('Location: councilor5.php');
         # code...
     } else {
@@ -105,3 +110,4 @@ if (isset($_POST['btn1'])) {
 
     </div>
 </body>
+<?php } ?>
