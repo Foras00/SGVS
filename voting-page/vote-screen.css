@@ -143,6 +143,7 @@ li>h1 {
 /* selection submit button style */
 .subb {
   border-radius: 12px;
+  transition: 300ms;
 }
 
 .subb:hover {
