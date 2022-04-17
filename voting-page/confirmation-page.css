@@ -1,0 +1,23 @@
+body{
+    background-image: url("../res/bluebg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.content-container{
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+
+}
+.vote-list-container{
+    width: 30em;
+    height: 30em;
+background-color: white;
+
+}
+

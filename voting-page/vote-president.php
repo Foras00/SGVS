@@ -1,13 +1,11 @@
 <?php
 include "../config.php";
-if (isset($_GET['back'])) {
+if (!isset($_SESSION['barcode'])) {
     session_destroy();
     header('Location: ../index.php');
 } else {
     //gamit lang to para maka generate ng <option> don sa baba yung may while loop
     $pres = $con->query("SELECT * FROM PRESIDENT_TABLE");
-
-
 
     # President
     $pcn = "";
@@ -39,7 +37,7 @@ if (isset($_GET['back'])) {
             //mag start ng bagong session tapos mag dedeclare ng $_SESSION variable
             //yung $_SESSION variable yung gagamitin para makuha yung user choices na candidates
             session_start();
-            $_SESSION['ppr'] = $pre;
+            $_SESSION['president'] = $pre;
             header('Location: vote-vicepresident.php');
         } else {
             echo "<script> alert('Please Select a Candidate') </script>";

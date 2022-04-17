@@ -1,8 +1,12 @@
 <?php
 include "../config.php";
 $treasurer = $con->query("SELECT * FROM TREASURER_TABLE");
-$tts = $_SESSION['trt'];
-
+if(!isset($_SESSION['barcode'])){
+    session_destroy();
+    header('Location: ../index.php');
+}else if(!isset($_SESSION['secretary'])){
+    header('Location: secretary.php');
+}else{
 
 # Treasurer
 $tcn = "";
@@ -26,7 +30,7 @@ if (isset($_POST['btn1'])) {
 
     if ($tre != "") {
         session_start();
-        $_SESSION['auu'] = $tre;
+        $_SESSION['treasurer'] = $tre;
         header('Location: auditor.php');
         # code...
     } else {
@@ -118,3 +122,4 @@ if (isset($_POST['btn1'])) {
 
 
 </html>
+<?php } ?>

@@ -149,10 +149,11 @@ body{
 }
 .inputs {
   text-align: center;
-  padding-top: 5em;
-  width: 15em;
+  padding-top: 3em;
+  width: 20em;
   
 }
+
 .field{
   width: 15em;
   margin-top: 1em;
@@ -161,6 +162,9 @@ body{
   border: 3px transparent solid;
   text-align: center;
   transition: 200ms linear;
+}
+.aid{
+  margin-top: 3.5em;
 }
 .field:focus{
   border: 3px #119CED solid;
@@ -172,13 +176,20 @@ body{
   border: none;
   border-radius: 1em;
   transition: 200ms linear;
-
 }
 .conf-btn:hover{
   background-color: #119CED;
   color: white;
 }
-
+.conf-err{
+  width: 10em;
+  height: 3em;
+  font-family: 'roboto'; 
+  color: white; 
+  font-size: .3em width 15em; 
+  position: absolute;
+  margin-left: 3em;
+}
 .conf-animation{
   visibility: visible;
   opacity: 100%;

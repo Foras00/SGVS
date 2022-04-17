@@ -7,7 +7,9 @@
                 <span style="--i:3">V</span>
                 <span style="--i:4">S</span>
             </div>
+            <div class="logout-container">
+                <a href="../logout.php" class="logout-button">Log out</a>
+            </div>
         </nav>
     </header>
 </div>
-

@@ -107,8 +107,8 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
             <div class="input-container">
                 <div class="inputs">
                     <h5 style="font-family: 'roboto'; color: white;">Confirm Identity</h5>
-                    <h5 style="font-family: 'roboto'; color: white;" id="conf-err"></h5>
-                    <input type="text" name="input-id" id="input-id" placeholder="Admin ID" class="field">
+                    <h5 id="conf-err" class="conf-err"></h5>
+                    <input type="text" name="input-id" id="input-id" placeholder="Admin ID" class="field aid">
                     <input type="password" name="input-pass" id="input-pass" placeholder="Password" class="field">
                     <input type="submit" name="submit-cofirmation" id="submit-confirmation" value="Confirm" class="conf-btn">
                     <input type="submit" name="cancel-confirmation" id="cancel-confirmation" value="Cancel" class="conf-btn">

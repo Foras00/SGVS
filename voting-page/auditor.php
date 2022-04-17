@@ -1,7 +1,12 @@
 <?php
 include "../config.php";
 $auditor = $con->query("SELECT * FROM AUDITOR_TABLE");
-$aus = $_SESSION['auu'];
+if(!isset($_SESSION['barcode'])){
+    session_destroy();
+    header('Location: ../index.php');
+}else if(!isset($_SESSION['treasurer'])){
+    header('Location: treasurer.php');
+}else{
 
 # Auditor
 $acn = "";
@@ -25,7 +30,7 @@ if (isset($_POST['btn1'])) {
 
     if ($tre != "") {
         session_start();
-        $_SESSION['cc1'] = $tre;
+        $_SESSION['auditor'] = $tre;
         header('Location: Councilor1.php');
         # code...
     } else {
@@ -110,3 +115,4 @@ if (isset($_POST['btn1'])) {
 
     </div>
 </body>
+<?php } ?>

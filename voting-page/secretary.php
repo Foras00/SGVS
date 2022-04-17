@@ -1,7 +1,12 @@
 <?php
 include "../config.php";
 $secretary = $con->query("SELECT * FROM SECRETARY_TABLE");
-$sc = $_SESSION['scc'];
+if(!isset($_SESSION['barcode'])){
+    session_destroy();
+    header('Location: ../index.php');
+}else if(!isset($_SESSION['vice_president'])){
+    header('Location: vote-vicepresident.php');
+}else{
 
 # Secretary
 $scn = "";
@@ -11,7 +16,7 @@ $ssection = "";
 # Secretary
 if (isset($_POST['btn'])) {
     $spre = $_POST['selection'];
-    $sec = $con->query("SELECT * FROM SECRETARY_TABLE WHERE ID = $spre");
+    $sec = $con->query("SELECT * FROM SECRETARY_TABLE WHERE ID = '$spre'");
 
 
     if ($sps = mysqli_fetch_assoc($sec)) {
@@ -24,7 +29,7 @@ if (isset($_POST['btn1'])) {
     $st = $_POST['spres'];
     if ($st != "") {
         session_start();
-        $_SESSION['trt'] = $st;
+        $_SESSION['secretary'] = $st;
         header('Location: treasurer.php');
         # code...
     } else {
@@ -112,3 +117,4 @@ if (isset($_POST['btn1'])) {
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 </html>
+<?php } ?>

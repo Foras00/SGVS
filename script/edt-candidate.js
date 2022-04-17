@@ -94,6 +94,9 @@ $(document).ready(function () {
     $('#input-id').keydown(function () {
         document.getElementById('conf-err').innerHTML = "";
     });
+    $('#input-pass').keydown(function () {
+        document.getElementById('conf-err').innerHTML = "";
+    });
 
     $('#submit-btn').click(function () {
         edtCandidate();
@@ -122,7 +125,6 @@ $(document).ready(function () {
     $('#submit-confirmation').click(function () {
         var ii = $('#input-id').val();
         var ip = $('#input-pass').val();
-
         if (ii == i && ip == p) {
             if (window.location.hash == "#candidate") {
                 if (confProcess == "edit") {
@@ -306,6 +308,7 @@ $(document).ready(function () {
                         }
                     });
                 } else if (confProcess == "delete") {
+                    console.log("delete detected")
                     $.ajax({
                         url: "../script/edt-party-submit.php",
                         type: "POST",
@@ -329,6 +332,9 @@ $(document).ready(function () {
                     });
                 }
             }
+        }else{
+            document.getElementById('conf-err').innerHTML = "Admin id or password does not match";
+
         }
 
     });
