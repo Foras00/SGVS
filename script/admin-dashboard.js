@@ -4,24 +4,27 @@ var sp = $('#sp').data('value');
 var confProcess = "";
 $(document).ready(function () {
     $('#reset').click(function () {
-        console.log("test");
+        $('#reset').val('cancel');
         if (confProcess == "") {
             $('.confirmation').toggleClass('conf-animation');
             confProcess = "reset"
         } else if (confProcess == "reset") {
             $('.confirmation').toggleClass('conf-animation');
             confProcess = ""
+            $('#reset').val('Reset Database');
+
         }
 
     });
     $('#print').click(function () {
-        console.log("test");
+        $('#print').val('cancel');
         if (confProcess == "") {
             $('.confirmation').toggleClass('conf-animation');
             confProcess = "print"
         } else if (confProcess == "print") {
             $('.confirmation').toggleClass('conf-animation');
             confProcess = ""
+            $('#print').val('Print Winning Candidates');
         }
     });
     $('#confirm').click(function () {

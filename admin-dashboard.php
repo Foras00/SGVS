@@ -212,9 +212,9 @@ if (!isset($_SESSION['adminId']) && !isset($_SESSION['passwrd'])) {
                 </div>
             </div>
 
-            <div class="reset-btn-container">
-                <input type="submit" id="reset" class="opt-btn" value="Reset Database">
-                <input type="submit" id="print" class="opt-btn" value="Print Winning Candidates">
+            <div class="opt-btn-container">
+                <input type="submit" id="reset" class="reset-opt-btn" value="Reset Database">
+                <input type="submit" id="print" class="print-opt-btn" value="Print Winning Candidates">
             </div>
 
         </div>

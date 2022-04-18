@@ -101,7 +101,39 @@
 .card-content > li > h1 {
   font-size: 15px;
 }
-
+.opt-btn-container{
+  width: 100%;;
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.reset-opt-btn{
+  width: 15em;
+  height: 3em;
+  outline: none;
+  border: none;
+  border-radius: 2em;
+  margin-right: .5em;
+  transition: 200ms ease;
+}
+.reset-opt-btn:hover{
+  background-color: rgb(255,25,25);
+  color: white;
+}
+.print-opt-btn{
+  width: 15em;
+  height: 3em;
+  outline: none;
+  border: none;
+  border-radius: 2em;
+  margin-left: .5em;
+  transition: 200ms ease;
+}
+.print-opt-btn:hover{
+  background-color: #119ced;
+  color: white;
+}
 .confirmation {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
