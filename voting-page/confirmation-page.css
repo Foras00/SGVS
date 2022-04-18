@@ -1,23 +1,203 @@
-body{
-    background-image: url("../res/bluebg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+body {
+  background-image: url("../res/bluebg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
 }
 
-.content-container{
-    width: 100%;
-    height: 100%;
+.content-container {
+  width: 100%;
+  height: auto;
 
-    background-color: rgba(0,0,0,0.4);
-    display: flex;
-    justify-content: center;
-
-}
-.vote-list-container{
-    width: 30em;
-    height: 30em;
-background-color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
 
 }
+.vote-list-container {
+  width: 40em;
+  height: 100%;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 1em;
+  background-color: rgb(71, 71, 71);
+}
+.vote-list-container > h1 {
+  color: white;
+  font-family: "Poiret One", cursive;
+  margin-left: 35%;
+}
+.infos {
+  color: white;
+  display: flex;
+  padding: 2em 2em 2em 2em;
+  font-family: "roboto";
+  border-bottom: 2px solid white;
+}
+.candidate-image {
+  height: 11em;
+  width: 11em;
+  border-radius: 2em;
+  margin-right: 5em;
+  object-fit: cover;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.conf-btn {
+  width: 10em;
+  height: 3em;
+  outline: none;
+  border: none;
+  border-radius: 2em;
+  transition: 200ms ease;
+  z-index: 1;
+}
+.conf-btn:hover {
+  background-color: #119ced;
+  color: white;
+}
+.cancel-btn {
+  width: 10em;
+  height: 3em;
+  outline: none;
+  border: none;
+  border-radius: 2em;
+  transition: 200ms ease;
+  z-index: 1;
 
+}
+.cancel-btn:hover {
+  background-color: rgb(255, 25, 25);
+  color: white;
+}
+
+.area {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.circles {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  border: 2px rgba(255, 255, 255, 0.8) solid;
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+  border-radius: 100%;
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+  }
+}

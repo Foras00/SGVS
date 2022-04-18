@@ -4,10 +4,10 @@ if ($_POST['action'] == 'edit' && $_POST['id']) {
 	$updateField='';
 	if(isset($_POST['name'])) {
 		$updateField.= "name='".$_POST['name']."'";
-	} else if(isset($_POST['gender'])) {
-		$updateField.= "gender='".$_POST['gender']."'";
-	} else if(isset($_POST['age'])) {
-		$updateField.= "age='".$_POST['age']."'";
+	} else if(isset($_POST['position'])) {
+		$updateField.= "position='".$_POST['position']."'";
+	} else if(isset($_POST['section'])) {
+		$updateField.= "section='".$_POST['section']."'";
 	}
 	if($updateField && $_POST['id']) {
 		$sqlQuery = "UPDATE developers SET $updateField WHERE id='" . $_POST['id'] . "'";	

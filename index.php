@@ -13,10 +13,15 @@ if (isset($_POST['submitbtn'])) {
         $count = $row['voter_id'];
 
         if ($count > 0) {
-            session_start();
-            $_SESSION['barcode'] = $barcode;
-            header('Location: ./voting-page/vote-president.php');
-            exit;
+            if($row['vote_status']  != "1"){
+                session_start();
+                $_SESSION['barcode'] = $barcode;
+                header('Location: ./voting-page/vote-president.php');
+                exit;
+            }else{
+                echo "<script>alert('This voter has already voted.')</script>";
+            }
+
         }
     }
 }
